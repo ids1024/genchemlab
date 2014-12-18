@@ -1,0 +1,10 @@
+<pre>
+version 0.2:
+All indicators work correctly.
+pH is now computed correctly.  [ log(x) changed to log10(x) ]
+A pot file is included for translation.
+Phosphoric acid and cola (i.e., Coca-Cola) can be titrated.
+
+version 0.1:
+First public release.
+</pre>

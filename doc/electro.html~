@@ -1,0 +1,15 @@
+<html>
+<head>
+<title>GenChemLab documentation - electrochemistry</title>
+</head>
+<body bgcolor="#FFFFFF">
+<p><b>Electrochemistry lab</b>
+<p>The vapor pressure lab simulates the measurement of potential between two half-cells connected by a salt bridge.
+<p><b>Setup</b>
+<p>The Electrochemistry menu provides one option: a set-up option.  Select this option to choose a metal and salt concentration for the left half-cell, and a metal and salt concentration for the right half-cell.
+<p><b>Running the experiment</b>
+<p>After pressing OK in the set up dialog, the potential is displayed on the status bar.  The voltage measurement is calculated assuming that the left cell is the anode and the right cell is the cathode.  However, it is possible that the right cell is the anode due to concentration or metal selection.  In this case, the potential will be negative.
+<p><a href="index.html">return to help index</a>
+</body>
+</html>
+

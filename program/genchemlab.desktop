@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Exec=genchemlab
+Icon=genchemlab.png
+DocPath=
+Comment=Simulation of a chemical lab.
+Comment[da]=Et simuleret kemisk laboratorium.
+Terminal=0
+Name=GenChemLab
+Encoding=UTF-8
+Categories=Application;Education;Chemestry;

@@ -1,0 +1,490 @@
+# translation of genchemlab-pl.po to Polish
+# translation of genchemlab.po to Polish
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Nikodem Kuznik <nkuznik@yahoo.com>, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: genchemlab-pl\n"
+"POT-Creation-Date: 2003-11-20 13:04-0500\n"
+"PO-Revision-Date: 2004-03-03 22:07+0100\n"
+"Last-Translator: Nikodem Kuznik <nkuznik@yahoo.com>\n"
+"Language-Team: Polish <pl@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.0.2\n"
+
+#: application.cpp:53 helpwindow.cpp:87
+msgid "&File"
+msgstr "&Plik"
+
+#: application.cpp:55
+msgid "&New"
+msgstr "&Nowy"
+
+#: application.cpp:68 helpwindow.cpp:68
+msgid "&Close"
+msgstr "Z&amknij"
+
+#: application.cpp:70
+msgid "&Quit"
+msgstr "Za&kończ"
+
+#: application.cpp:73
+msgid "&Select Lab"
+msgstr "W&ybierz ćwiczenie"
+
+#: application.cpp:75 application.cpp:259
+msgid "&Titration"
+msgstr "&Miareczkowanie"
+
+#: application.cpp:78 application.cpp:292
+msgid "&Calorimetry"
+msgstr "&Kalorymetria"
+
+#: application.cpp:79
+msgid "&Freezing point depression"
+msgstr "&Obniżenie temperatury krzepnięcia"
+
+#: application.cpp:81 application.cpp:353
+msgid "&Vapor pressure"
+msgstr "&Ciśnienie pary"
+
+#: application.cpp:83 application.cpp:372
+msgid "&Electrochemistry"
+msgstr "&Elektrochemia"
+
+#: application.cpp:85 application.cpp:332
+msgid "&Spectrophotometry"
+msgstr "&Spektrofotometria"
+
+#: application.cpp:91 application.cpp:93 helpwindow.cpp:90
+msgid "&Help"
+msgstr "Pomo&c"
+
+#: application.cpp:95
+msgid "&About"
+msgstr "&O programie GenChemLab"
+
+#: application.cpp:103
+msgid "Choose a lab from the 'Select Lab' menu"
+msgstr "Wybierz zagadnienie z menu 'Wymierz ćwiczenie'"
+
+#: application.cpp:149 application.cpp:242 main.cpp:41
+msgid "General Chemistry Lab Simulator"
+msgstr "Wirtualne Laboratorium Chemii Ogólnej"
+
+#: application.cpp:232
+msgid "GenChemLab - Help viewer"
+msgstr "Przeglądarka pomocy GenChemLab"
+
+#: application.cpp:256
+msgid "Starting titration lab."
+msgstr "Wejście do ćwiczenia z miareczkowania"
+
+#: application.cpp:261
+msgid "Fill &buret"
+msgstr "&Napełnij biuretę"
+
+#: application.cpp:262
+msgid "&Add to beaker"
+msgstr "Dod&aj do zlewki"
+
+#: application.cpp:263
+msgid "Add &indicator to beaker"
+msgstr "Dodaj &wskaźnik do zlewki"
+
+#: application.cpp:278
+msgid "Starting qualitative analysis lab."
+msgstr "Wejście do ćwiczenia z analizy jakościowej"
+
+#: application.cpp:294
+msgid "&Find calorimeter constant"
+msgstr "&Wyznacz stałą kalorymetru"
+
+#: application.cpp:296 application.cpp:314
+msgid "&Set up experiment"
+msgstr "&Przygotuj eksperyment"
+
+#: application.cpp:298
+msgid "Starting calorimetry lab."
+msgstr "Wejście do ćwiczenia z kalorymetrii"
+
+#: application.cpp:312
+msgid "&Freezing-Point"
+msgstr "&Temperatura krzepnięcia"
+
+#: application.cpp:315
+msgid "&Set target temperature"
+msgstr "&Ustaw temperaturę końcową"
+
+#: application.cpp:318
+msgid "Starting freezing point depression lab."
+msgstr "Wejście do ćwiczenia z obniżenia temperatury krzepnięcia."
+
+#: application.cpp:334
+msgid "&Set wavelength"
+msgstr "&Ustaw długość fali"
+
+#: application.cpp:335
+msgid "&Wavelength scan"
+msgstr "&Skanowanie zakresu długości fali"
+
+#: application.cpp:336
+msgid "&Make sample"
+msgstr "&Przygotuj próbkę"
+
+#: application.cpp:339
+msgid "Starting spectrophotometry lab."
+msgstr "Wejście do ćwiczenia ze spektrofotometrii."
+
+#: application.cpp:355 application.cpp:374
+msgid "&Set up"
+msgstr "&Przygotuj"
+
+#: application.cpp:358
+msgid "Starting vapor pressure lab."
+msgstr "Wejście do ćwiczenia z prężności pary."
+
+#: application.cpp:377
+msgid "Starting electrochemistry lab."
+msgstr "Wejście do ćwiczenia z elektrochemii."
+
+#: bpfp.cpp:55 calorimetry.cpp:68
+msgid "Time = %1 seconds; temperature = %2 C"
+msgstr "Czas = %1 sekund, temperatura = %2 C"
+
+#: bpfp.cpp:63 vapor.cpp:115
+msgid "set temperature"
+msgstr "ustaw temperaturę"
+
+#: bpfp.cpp:64
+msgid ""
+"The flask will be chilled in a simulated ice/water/rock salt bath to "
+"approximately -20 C.\n"
+"Click on the flask to start."
+msgstr ""
+"Naczynie zostanie schłodzone w łaźni lodowej/wodnej/piaskowej "
+"do temperatury ok. -20C.\n"
+"Kliknij naczynie, aby rozpocząć."
+
+#: buretdialog.cpp:17 indicatordialog.cpp:17
+msgid "Choose indicator"
+msgstr "Wybierz wskaźnik"
+
+#: buretdialog.cpp:20
+msgid "Fill buret with: "
+msgstr "Wypełnij biuretę roztworem"
+
+#: buretdialog.cpp:29 chem_dialog.cpp:69 electrodialog.cpp:64
+#: indicatordialog.cpp:32 textdialog.cpp:23
+msgid "OK"
+msgstr "OK"
+
+#: buretdialog.cpp:33 chem_dialog.cpp:73 electrodialog.cpp:68
+#: indicatordialog.cpp:36
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: calorimetry.cpp:112 calorimetry.cpp:123
+msgid "Experiment setup"
+msgstr "Ustawienia eksperymentu"
+
+#: calorimetry.cpp:112
+msgid "Click on calorimeter to start."
+msgstr "Kliknij kalorymetr, aby rozpocząć."
+
+#: calorimetry.cpp:123
+msgid ""
+"100 mL of cold water\n"
+"100 mL of room temperature water = 20 C\n"
+"Click on calorimeter to start."
+msgstr ""
+"100 cm3 zimnej wody\n"
+"100 cm3 wody o temperaturze pokojowej (20C)\n"
+"Kliknij kalorymetr, aby rozpocząć."
+
+#: chem_dialog.cpp:19
+msgid "Add chemical to beaker"
+msgstr "Dodaj odczynnik do zlewki"
+
+#: chem_dialog.cpp:21
+msgid "Add chemical to calorimeter"
+msgstr "Dodaj odczynnik do kalorymetru"
+
+#: chem_dialog.cpp:24
+msgid "Add"
+msgstr "Dodaj"
+
+#: chem_dialog.cpp:29
+msgid "grams"
+msgstr "gram"
+
+#: chem_dialog.cpp:30 chem_dialog.cpp:67
+msgid "mL"
+msgstr "cm3"
+
+#: chem_dialog.cpp:33
+msgid "of"
+msgstr " "
+
+#: chem_dialog.cpp:37
+msgid "KHP"
+msgstr "wodoroftalanu potasu"
+
+#: chem_dialog.cpp:38
+msgid "acetic acid"
+msgstr "kwasu octowego"
+
+#: chem_dialog.cpp:39
+msgid "citric acid"
+msgstr "kwasu cytrynowego"
+
+#: chem_dialog.cpp:40
+
+msgid "ascorbic acid"
+msgstr "kwasu askorbinowego"
+
+#: chem_dialog.cpp:41
+msgid "phosphoric acid"
+msgstr "kwasu fosforowego(V)"
+
+#: chem_dialog.cpp:42
+msgid "cola"
+msgstr "Coca-Coli"
+
+#: chem_dialog.cpp:45
+msgid "H2O2"
+msgstr "H2O2"
+
+#: chem_dialog.cpp:46
+msgid "(NH4)2SO4"
+msgstr "(NH4)2SO4"
+
+#: chem_dialog.cpp:47
+msgid "MgSO4"
+msgstr "MgSO4"
+
+#: chem_dialog.cpp:50
+msgid "Table salt"
+msgstr "chlorku sodu"
+
+#: chem_dialog.cpp:51
+msgid "Clcium chloride"
+msgstr "chlorku potasu"
+
+#: chem_dialog.cpp:52
+msgid "Table sugar"
+msgstr "sacharozy"
+
+#: chem_dialog.cpp:53
+msgid "Aspirin"
+msgstr "Polopiryny"
+
+#: chem_dialog.cpp:56
+msgid "Cobalt chloride"
+msgstr "chlorku kobaltu(II)"
+
+#: chem_dialog.cpp:57
+msgid "Copper sulfate"
+msgstr "siarczanu(VI) miedzi(II)"
+
+#: chem_dialog.cpp:58
+msgid "Nickel sulfate"
+msgstr "siarczanu(VI) niklu(II)"
+
+#: chem_dialog.cpp:60
+msgid "Dissolve in water:"
+msgstr "Rozpuść w wodzie:"
+
+#: electro.cpp:56 kinetic.cpp:53
+msgid "Temperature = 25 C, Voltage = %1 V"
+msgstr "Temperatura = 25C, Napięcie = %1 V"
+
+#: electrodialog.cpp:18
+msgid "Set up electrochemistry experiment"
+msgstr "Przygotuj eksperyment z elektrochemii"
+
+#: electrodialog.cpp:21
+msgid "Left beaker"
+msgstr "Lewa zlewka"
+
+#: electrodialog.cpp:24
+msgid "Right beaker"
+msgstr "Prawa zlewka"
+
+#: electrodialog.cpp:27 electrodialog.cpp:30
+msgid "Electrode metal:"
+msgstr "Elektroda metaliczna:"
+
+#: electrodialog.cpp:32 electrodialog.cpp:42
+msgid "Silver"
+msgstr "srebro"
+
+#: electrodialog.cpp:33 electrodialog.cpp:43
+msgid "Copper"
+msgstr "miedź"
+
+#: electrodialog.cpp:34 electrodialog.cpp:44
+msgid "Lead"
+msgstr "ołów"
+
+#: electrodialog.cpp:35 electrodialog.cpp:45
+msgid "Tin"
+msgstr "cyna"
+
+#: electrodialog.cpp:36 electrodialog.cpp:46
+msgid "Nickel"
+msgstr "nikiel"
+
+#: electrodialog.cpp:37 electrodialog.cpp:47
+msgid "Iron(II)"
+msgstr "żelazo(II)"
+
+#: electrodialog.cpp:38 electrodialog.cpp:48
+msgid "Chromium"
+msgstr "chrom"
+
+#: electrodialog.cpp:39 electrodialog.cpp:49
+msgid "Zinc"
+msgstr "cynk"
+
+#: electrodialog.cpp:53 electrodialog.cpp:56
+msgid "Salt concentration (M):"
+msgstr "Stężenie soli (M):"
+
+#: helpwindow.cpp:77
+
+msgid "&Backward"
+msgstr "&Wstecz"
+
+#: helpwindow.cpp:80
+
+msgid "&Forward"
+msgstr "&Do przodu"
+
+#: helpwindow.cpp:82
+msgid "&Home"
+msgstr "&Home"
+
+#: helpwindow.cpp:85
+msgid "&About ..."
+msgstr "&O programie GenChemLab ..."
+
+#: helpwindow.cpp:88
+msgid "&Go"
+msgstr "&Idź"
+
+#: helpwindow.cpp:104
+
+msgid "Backward"
+msgstr "W tył"
+
+#: helpwindow.cpp:107
+
+msgid "Forward"
+msgstr "Do przodu"
+
+#: helpwindow.cpp:110
+msgid "Home"
+msgstr "Home"
+
+#: indicatordialog.cpp:20
+msgid "Indicator: "
+msgstr "Wskaźnik: "
+
+#: indicatordialog.cpp:22
+msgid "Bromophenol blue"
+msgstr "błękit bromofenolowy"
+
+#: indicatordialog.cpp:23
+msgid "Bromothymol blue"
+msgstr "błękit bromotymolowy"
+
+#: indicatordialog.cpp:24
+msgid "Litmus"
+msgstr "lakmus"
+
+#: indicatordialog.cpp:25
+msgid "Methyl orange"
+msgstr "oranż metylowy"
+
+#: indicatordialog.cpp:26
+msgid "Methyl red"
+msgstr "czerwień metylowa"
+
+#: indicatordialog.cpp:27
+msgid "Phenol red"
+msgstr "czerwień fenolowa"
+
+#: indicatordialog.cpp:28
+msgid "Phenolphthalein"
+msgstr "fenoloftaleina"
+
+#: spec.cpp:53
+msgid "Wavelength = %1 nm; A = %2"
+msgstr "Długość fali = %1 nm, A = %2"
+
+#: spec.cpp:239
+msgid "Set wavelength"
+msgstr "Ustaw długość fali"
+
+#: spec.cpp:240
+msgid "Enter the wavelength in nanometers:"
+msgstr "Wprowadź długość fali [nm]:"
+
+#: spec.cpp:257
+msgid "Wavelength scan"
+msgstr "Skanowanie zakresu długości fali"
+
+#: spec.cpp:258
+msgid ""
+"The spectrophotometer will now scan from 390 nm to 740 nm and display the "
+"results."
+msgstr ""
+"Teraz nastąpi skanowanie zakresu długości fali od 390 nm do 740 nm przez spektrofotometr. Wynik pomiaru "
+"zostanie wyświetlony po zakończeniu skanowania."
+
+#: spec.cpp:259
+msgid "Wavelength, absorbance\n"
+msgstr "Długość fali, absorbancja\n"
+
+#: textdialog.cpp:17
+
+msgid "Output"
+msgstr "Wyjście"
+
+#: titration.cpp:52
+msgid "Volume dispensed = %1 mL; pH = %2"
+msgstr "Objętość wprowadzona z biurety = %1 cm3, pH = %2"
+
+#: vapor.cpp:56
+msgid "Temperature = %1 C; air volume = %2 mL"
+msgstr "Temperatura = %1 C, objętość powietrza = %2 cm3"
+
+#: vapor.cpp:87
+msgid "Set up experiment"
+msgstr "Przygotuj eksperyment"
+
+#: vapor.cpp:88
+msgid "Fill beaker with:"
+msgstr "Wypełnij zlewkę:"
+
+#: vapor.cpp:89
+msgid "&Water"
+msgstr "&wodą"
+
+#: vapor.cpp:89
+msgid "&Ethanol"
+msgstr "&etanolem"
+
+#: vapor.cpp:90
+msgid "&Hexane"
+msgstr "&heksanem"
+
+#: vapor.cpp:116
+msgid "Click on the flask to start heating."
+msgstr "Kliknij naczynie, aby rozpocząć ogrzewanie."
+

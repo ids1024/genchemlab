@@ -1,0 +1,47 @@
+# Process this file with autoconf to produce a configure script.
+AC_INIT([genchemlab], [0.1], [herger@chemistry.gatech.edu])
+AC_CONFIG_SRCDIR([program/application.cpp])
+AM_INIT_AUTOMAKE(genchemlab, 0.1)
+AM_CONFIG_HEADER([config.h])
+top_builddir=`pwd`
+AC_SUBST(top_builddir)
+
+# Checks for programs.
+AC_PROG_CXX
+AC_PROG_CC
+AC_PROG_INSTALL
+AC_PROG_LIBTOOL
+AC_PATH_PROG(AR, ar)
+
+# Checks for libraries.
+AC_ARG_WITH(qt-thread, AC_HELP_STRING([--with-qt-thread],
+            [use Qt threaded library (libqt-mt.so) (default is YES)]),
+            package_qt_enabled=$withval, package_qt_enabled=yes)
+if test "$package_qt_enabled" = yes; then
+	qtlibname=qt-mt
+else
+	qtlibname=qt
+fi
+AC_SUBST(qtlibname)
+
+# Checks for header files.
+AC_HEADER_STDC
+AC_CHECK_HEADERS([errno.h stdlib.h unistd.h])
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+AC_C_INLINE
+AC_STRUCT_TM
+
+# Checks for library functions.
+AC_FUNC_MALLOC
+AC_CHECK_FUNCS([floor pow sqrt])
+
+MY_SUBDIRS=". program doc"
+
+AC_SUBST(MY_SUBDIRS)
+AC_CONFIG_FILES([Makefile 
+		 program/Makefile
+		 doc/Makefile])
+
+AC_OUTPUT

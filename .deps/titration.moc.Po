@@ -1,0 +1,318 @@
+titration.moc.o titration.moc.o: titration.moc.cpp titration.h \
+  /usr/local/qt/include/qgl.h /usr/local/qt/include/qwidget.h \
+  /usr/local/qt/include/qwindowdefs.h /usr/local/qt/include/qobjectdefs.h \
+  /usr/local/qt/include/qglobal.h /usr/local/qt/include/qconfig.h \
+  /usr/local/qt/include/qmodules.h /usr/local/qt/include/qfeatures.h \
+  /usr/local/qt/include/qstring.h /usr/local/qt/include/qcstring.h \
+  /usr/local/qt/include/qmemarray.h /usr/local/qt/include/qgarray.h \
+  /usr/local/qt/include/qshared.h /usr/include/string.h \
+  /usr/include/features.h /usr/include/sys/cdefs.h \
+  /usr/include/gnu/stubs.h \
+  /usr/lib/gcc-lib/i386-redhat-linux/2.96/include/stddef.h \
+  /usr/local/qt/include/qnamespace.h \
+  /usr/lib/gcc-lib/i386-redhat-linux/2.96/include/limits.h \
+  /usr/lib/gcc-lib/i386-redhat-linux/2.96/include/syslimits.h \
+  /usr/include/limits.h /usr/include/bits/posix1_lim.h \
+  /usr/include/bits/local_lim.h /usr/include/linux/limits.h \
+  /usr/include/bits/posix2_lim.h /usr/local/qt/include/qobject.h \
+  /usr/local/qt/include/qevent.h /usr/local/qt/include/qregion.h \
+  /usr/local/qt/include/qrect.h /usr/local/qt/include/qsize.h \
+  /usr/local/qt/include/qpoint.h /usr/local/qt/include/qmime.h \
+  /usr/local/qt/include/qmap.h /usr/local/qt/include/qdatastream.h \
+  /usr/local/qt/include/qiodevice.h /usr/local/qt/include/qpair.h \
+  /usr/local/qt/include/qtl.h /usr/local/qt/include/qtextstream.h \
+  /usr/include/stdio.h /usr/include/bits/types.h \
+  /usr/include/bits/pthreadtypes.h /usr/include/bits/sched.h \
+  /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
+  /usr/include/bits/wchar.h /usr/include/gconv.h \
+  /usr/lib/gcc-lib/i386-redhat-linux/2.96/include/stdarg.h \
+  /usr/include/bits/stdio_lim.h /usr/include/g++-3/iterator \
+  /usr/include/g++-3/stl_config.h /usr/include/g++-3/stl_relops.h \
+  /usr/include/g++-3/iostream.h /usr/include/g++-3/streambuf.h \
+  /usr/include/g++-3/stl_iterator.h /usr/include/g++-3/map \
+  /usr/include/g++-3/stl_tree.h /usr/include/g++-3/stl_algobase.h \
+  /usr/include/g++-3/stl_pair.h /usr/include/g++-3/type_traits.h \
+  /usr/include/stdlib.h /usr/include/sys/types.h /usr/include/time.h \
+  /usr/include/endian.h /usr/include/bits/endian.h \
+  /usr/include/sys/select.h /usr/include/bits/select.h \
+  /usr/include/bits/sigset.h /usr/include/bits/time.h \
+  /usr/include/sys/sysmacros.h /usr/include/alloca.h \
+  /usr/lib/gcc-lib/i386-redhat-linux/2.96/include/new.h \
+  /usr/lib/gcc-lib/i386-redhat-linux/2.96/include/new \
+  /usr/lib/gcc-lib/i386-redhat-linux/2.96/include/exception \
+  /usr/include/g++-3/stl_alloc.h /usr/include/assert.h \
+  /usr/include/pthread.h /usr/include/sched.h /usr/include/signal.h \
+  /usr/include/bits/initspin.h /usr/include/bits/sigthread.h \
+  /usr/include/g++-3/stl_construct.h /usr/include/g++-3/stl_function.h \
+  /usr/include/g++-3/stl_map.h /usr/include/g++-3/stl_multimap.h \
+  /usr/local/qt/include/qpaintdevice.h /usr/local/qt/include/qpalette.h \
+  /usr/local/qt/include/qcolor.h /usr/local/qt/include/qbrush.h \
+  /usr/local/qt/include/qfont.h /usr/local/qt/include/qfontmetrics.h \
+  /usr/local/qt/include/qfontinfo.h /usr/local/qt/include/qsizepolicy.h \
+  /usr/local/qt/include/qglcolormap.h /usr/X11R6/include/GL/gl.h \
+  /usr/X11R6/include/GL/glext.h /usr/include/GL/glu.h \
+  /usr/local/qt/include/qcursor.h /usr/local/qt/include/qpainter.h \
+  /usr/local/qt/include/qpen.h /usr/local/qt/include/qpointarray.h \
+  /usr/local/qt/include/qwmatrix.h point3d.h \
+  /usr/local/qt/include/qmetaobject.h /usr/local/qt/include/qconnection.h \
+  /usr/local/qt/include/qstrlist.h /usr/local/qt/include/qptrlist.h \
+  /usr/local/qt/include/qglist.h /usr/local/qt/include/qptrcollection.h \
+  /usr/local/qt/include/qapplication.h \
+  /usr/local/qt/include/qdesktopwidget.h \
+  /usr/local/qt/include/qasciidict.h /usr/local/qt/include/qgdict.h \
+  /usr/local/qt/include/qtranslator.h /usr/local/qt/include/qvaluelist.h \
+  /usr/include/g++-3/list /usr/include/g++-3/stl_uninitialized.h \
+  /usr/include/g++-3/stl_list.h /usr/local/qt/include/qstringlist.h \
+  /usr/local/qt/include/quuid.h /usr/include/memory.h \
+  /usr/local/qt/include/private/qucomextra_p.h \
+  /usr/local/qt/include/private/qucom_p.h
+
+titration.h:
+
+/usr/local/qt/include/qgl.h:
+
+/usr/local/qt/include/qwidget.h:
+
+/usr/local/qt/include/qwindowdefs.h:
+
+/usr/local/qt/include/qobjectdefs.h:
+
+/usr/local/qt/include/qglobal.h:
+
+/usr/local/qt/include/qconfig.h:
+
+/usr/local/qt/include/qmodules.h:
+
+/usr/local/qt/include/qfeatures.h:
+
+/usr/local/qt/include/qstring.h:
+
+/usr/local/qt/include/qcstring.h:
+
+/usr/local/qt/include/qmemarray.h:
+
+/usr/local/qt/include/qgarray.h:
+
+/usr/local/qt/include/qshared.h:
+
+/usr/include/string.h:
+
+/usr/include/features.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/gnu/stubs.h:
+
+/usr/lib/gcc-lib/i386-redhat-linux/2.96/include/stddef.h:
+
+/usr/local/qt/include/qnamespace.h:
+
+/usr/lib/gcc-lib/i386-redhat-linux/2.96/include/limits.h:
+
+/usr/lib/gcc-lib/i386-redhat-linux/2.96/include/syslimits.h:
+
+/usr/include/limits.h:
+
+/usr/include/bits/posix1_lim.h:
+
+/usr/include/bits/local_lim.h:
+
+/usr/include/linux/limits.h:
+
+/usr/include/bits/posix2_lim.h:
+
+/usr/local/qt/include/qobject.h:
+
+/usr/local/qt/include/qevent.h:
+
+/usr/local/qt/include/qregion.h:
+
+/usr/local/qt/include/qrect.h:
+
+/usr/local/qt/include/qsize.h:
+
+/usr/local/qt/include/qpoint.h:
+
+/usr/local/qt/include/qmime.h:
+
+/usr/local/qt/include/qmap.h:
+
+/usr/local/qt/include/qdatastream.h:
+
+/usr/local/qt/include/qiodevice.h:
+
+/usr/local/qt/include/qpair.h:
+
+/usr/local/qt/include/qtl.h:
+
+/usr/local/qt/include/qtextstream.h:
+
+/usr/include/stdio.h:
+
+/usr/include/bits/types.h:
+
+/usr/include/bits/pthreadtypes.h:
+
+/usr/include/bits/sched.h:
+
+/usr/include/libio.h:
+
+/usr/include/_G_config.h:
+
+/usr/include/wchar.h:
+
+/usr/include/bits/wchar.h:
+
+/usr/include/gconv.h:
+
+/usr/lib/gcc-lib/i386-redhat-linux/2.96/include/stdarg.h:
+
+/usr/include/bits/stdio_lim.h:
+
+/usr/include/g++-3/iterator:
+
+/usr/include/g++-3/stl_config.h:
+
+/usr/include/g++-3/stl_relops.h:
+
+/usr/include/g++-3/iostream.h:
+
+/usr/include/g++-3/streambuf.h:
+
+/usr/include/g++-3/stl_iterator.h:
+
+/usr/include/g++-3/map:
+
+/usr/include/g++-3/stl_tree.h:
+
+/usr/include/g++-3/stl_algobase.h:
+
+/usr/include/g++-3/stl_pair.h:
+
+/usr/include/g++-3/type_traits.h:
+
+/usr/include/stdlib.h:
+
+/usr/include/sys/types.h:
+
+/usr/include/time.h:
+
+/usr/include/endian.h:
+
+/usr/include/bits/endian.h:
+
+/usr/include/sys/select.h:
+
+/usr/include/bits/select.h:
+
+/usr/include/bits/sigset.h:
+
+/usr/include/bits/time.h:
+
+/usr/include/sys/sysmacros.h:
+
+/usr/include/alloca.h:
+
+/usr/lib/gcc-lib/i386-redhat-linux/2.96/include/new.h:
+
+/usr/lib/gcc-lib/i386-redhat-linux/2.96/include/new:
+
+/usr/lib/gcc-lib/i386-redhat-linux/2.96/include/exception:
+
+/usr/include/g++-3/stl_alloc.h:
+
+/usr/include/assert.h:
+
+/usr/include/pthread.h:
+
+/usr/include/sched.h:
+
+/usr/include/signal.h:
+
+/usr/include/bits/initspin.h:
+
+/usr/include/bits/sigthread.h:
+
+/usr/include/g++-3/stl_construct.h:
+
+/usr/include/g++-3/stl_function.h:
+
+/usr/include/g++-3/stl_map.h:
+
+/usr/include/g++-3/stl_multimap.h:
+
+/usr/local/qt/include/qpaintdevice.h:
+
+/usr/local/qt/include/qpalette.h:
+
+/usr/local/qt/include/qcolor.h:
+
+/usr/local/qt/include/qbrush.h:
+
+/usr/local/qt/include/qfont.h:
+
+/usr/local/qt/include/qfontmetrics.h:
+
+/usr/local/qt/include/qfontinfo.h:
+
+/usr/local/qt/include/qsizepolicy.h:
+
+/usr/local/qt/include/qglcolormap.h:
+
+/usr/X11R6/include/GL/gl.h:
+
+/usr/X11R6/include/GL/glext.h:
+
+/usr/include/GL/glu.h:
+
+/usr/local/qt/include/qcursor.h:
+
+/usr/local/qt/include/qpainter.h:
+
+/usr/local/qt/include/qpen.h:
+
+/usr/local/qt/include/qpointarray.h:
+
+/usr/local/qt/include/qwmatrix.h:
+
+point3d.h:
+
+/usr/local/qt/include/qmetaobject.h:
+
+/usr/local/qt/include/qconnection.h:
+
+/usr/local/qt/include/qstrlist.h:
+
+/usr/local/qt/include/qptrlist.h:
+
+/usr/local/qt/include/qglist.h:
+
+/usr/local/qt/include/qptrcollection.h:
+
+/usr/local/qt/include/qapplication.h:
+
+/usr/local/qt/include/qdesktopwidget.h:
+
+/usr/local/qt/include/qasciidict.h:
+
+/usr/local/qt/include/qgdict.h:
+
+/usr/local/qt/include/qtranslator.h:
+
+/usr/local/qt/include/qvaluelist.h:
+
+/usr/include/g++-3/list:
+
+/usr/include/g++-3/stl_uninitialized.h:
+
+/usr/include/g++-3/stl_list.h:
+
+/usr/local/qt/include/qstringlist.h:
+
+/usr/local/qt/include/quuid.h:
+
+/usr/include/memory.h:
+
+/usr/local/qt/include/private/qucomextra_p.h:
+
+/usr/local/qt/include/private/qucom_p.h:

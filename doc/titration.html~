@@ -1,0 +1,18 @@
+<html>
+<head>
+<title>GenChemLab documentation home</title>
+</head>
+<body bgcolor="#FFFFFF">
+<p><b>Titration lab</b>
+<p>The Titration lab features a buret, beaker, and virtual pH meter.  The amount of liquid dispensed and the pH are automatically tracked and displayed on the status bar.
+<p><b>Setup</b>
+<p>The Titration menu offers three options for experiment setup.  
+<p>The first option allows you to select a reagent to put in the buret.  The buret has infinite capacity and only need to be filled once.  
+<p>The second option allows you to put reagents to titrate in the beaker.  You should select an amount of reagent, then check the bo to add water, and dissolve the reagent to be titrated.  Your lab manual should specify the amount of reagent to use, and the amount of water in which to dissolve it.  
+<p>The third menu option allows you to add indicator to the beaker, if required for the experiment.
+<p><b>Running the epxeriment</b>
+<p>Click on the stopcock and drag down.  The buret will begin draining into the beaker.  The further down the screen you drag the pointer, the faster the flow rate.  Release the mouse button to stop the buret.  You can stop and start the buret as often as needed.  The amount dispensed and the pH are displayed at the bottom of the window.
+<p><a href="index.html">return to help index</a>
+</body>
+</html>
+

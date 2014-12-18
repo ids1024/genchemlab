@@ -1,0 +1,18 @@
+<html>
+<head>
+<title>GenChemLab documentation - vapor pressure</title>
+</head>
+<body bgcolor="#FFFFFF">
+<p><b>Vapor pressure lab</b>
+<p>The vapor pressure lab simulates heating a liquid and monitoring vapor pressure by observing the expansion of a bubble trapped in an inverted test tube immersed in the liquid.
+<p><b>Setup</b>
+<p>The Vapor Pressure menu provides one option: a set-up option.  Select this option to fill the beaker with liquid.  A dialog box will appear to allow the user to select the liquid which will be put in the beaker.
+<p><b>Running the experiment</b>
+<p>Click on the beaker to start the experiment.  The indicator on the
+Heat-O-Matic(tm) pedestal will turn red, indicating heating is
+occuring.  The temperature is increased by 1 C per second, so
+students will need to pay attention!  The air bubble trapped in the inverted test tube expands as the liquid heats.  It's possible to stop heating by clicking again in order to record an observation.  The volume of the trapped air bubble and the temperature are reported on the status line.
+<p><a href="index.html">return to help index</a>
+</body>
+</html>
+

@@ -1,0 +1,474 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2003-11-20 13:04-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: application.cpp:53 helpwindow.cpp:87
+msgid "&File"
+msgstr ""
+
+#: application.cpp:55
+msgid "&New"
+msgstr ""
+
+#: application.cpp:68 helpwindow.cpp:68
+msgid "&Close"
+msgstr ""
+
+#: application.cpp:70
+msgid "&Quit"
+msgstr ""
+
+#: application.cpp:73
+msgid "&Select Lab"
+msgstr ""
+
+#: application.cpp:75 application.cpp:259
+msgid "&Titration"
+msgstr ""
+
+#: application.cpp:78 application.cpp:292
+msgid "&Calorimetry"
+msgstr ""
+
+#: application.cpp:79
+msgid "&Freezing point depression"
+msgstr ""
+
+#: application.cpp:81 application.cpp:353
+msgid "&Vapor pressure"
+msgstr ""
+
+#: application.cpp:83 application.cpp:372
+msgid "&Electrochemistry"
+msgstr ""
+
+#: application.cpp:85 application.cpp:332
+msgid "&Spectrophotometry"
+msgstr ""
+
+#: application.cpp:91 application.cpp:93 helpwindow.cpp:90
+msgid "&Help"
+msgstr ""
+
+#: application.cpp:95
+msgid "&About"
+msgstr ""
+
+#: application.cpp:103
+msgid "Choose a lab from the 'Select Lab' menu"
+msgstr ""
+
+#: application.cpp:149 application.cpp:242 main.cpp:41
+msgid "General Chemistry Lab Simulator"
+msgstr ""
+
+#: application.cpp:232
+msgid "GenChemLab - Help viewer"
+msgstr ""
+
+#: application.cpp:256
+msgid "Starting titration lab."
+msgstr ""
+
+#: application.cpp:261
+msgid "Fill &buret"
+msgstr ""
+
+#: application.cpp:262
+msgid "&Add to beaker"
+msgstr ""
+
+#: application.cpp:263
+msgid "Add &indicator to beaker"
+msgstr ""
+
+#: application.cpp:278
+msgid "Starting qualitative analysis lab."
+msgstr ""
+
+#: application.cpp:294
+msgid "&Find calorimeter constant"
+msgstr ""
+
+#: application.cpp:296 application.cpp:314
+msgid "&Set up experiment"
+msgstr ""
+
+#: application.cpp:298
+msgid "Starting calorimetry lab."
+msgstr ""
+
+#: application.cpp:312
+msgid "&Freezing-Point"
+msgstr ""
+
+#: application.cpp:315
+msgid "&Set target temperature"
+msgstr ""
+
+#: application.cpp:318
+msgid "Starting freezing point depression lab."
+msgstr ""
+
+#: application.cpp:334
+msgid "&Set wavelength"
+msgstr ""
+
+#: application.cpp:335
+msgid "&Wavelength scan"
+msgstr ""
+
+#: application.cpp:336
+msgid "&Make sample"
+msgstr ""
+
+#: application.cpp:339
+msgid "Starting spectrophotometry lab."
+msgstr ""
+
+#: application.cpp:355 application.cpp:374
+msgid "&Set up"
+msgstr ""
+
+#: application.cpp:358
+msgid "Starting vapor pressure lab."
+msgstr ""
+
+#: application.cpp:377
+msgid "Starting electrochemistry lab."
+msgstr ""
+
+#: bpfp.cpp:55 calorimetry.cpp:68
+msgid "Time = %1 seconds; temperature = %2 C"
+msgstr ""
+
+#: bpfp.cpp:63 vapor.cpp:115
+msgid "set temperature"
+msgstr ""
+
+#: bpfp.cpp:64
+msgid ""
+"The flask will be chilled in a simulated ice/water/rock salt bath to "
+"approximately -20 C.\n"
+"Click on the flask to start."
+msgstr ""
+
+#: buretdialog.cpp:17 indicatordialog.cpp:17
+msgid "Choose indicator"
+msgstr ""
+
+#: buretdialog.cpp:20
+msgid "Fill buret with: "
+msgstr ""
+
+#: buretdialog.cpp:29 chem_dialog.cpp:69 electrodialog.cpp:64
+#: indicatordialog.cpp:32 textdialog.cpp:23
+msgid "OK"
+msgstr ""
+
+#: buretdialog.cpp:33 chem_dialog.cpp:73 electrodialog.cpp:68
+#: indicatordialog.cpp:36
+msgid "Cancel"
+msgstr ""
+
+#: calorimetry.cpp:112 calorimetry.cpp:123
+msgid "Experiment setup"
+msgstr ""
+
+#: calorimetry.cpp:112
+msgid "Click on calorimeter to start."
+msgstr ""
+
+#: calorimetry.cpp:123
+msgid ""
+"100 mL of cold water\n"
+"100 mL of room temperature water = 20 C\n"
+"Click on calorimeter to start."
+msgstr ""
+
+#: chem_dialog.cpp:19
+msgid "Add chemical to beaker"
+msgstr ""
+
+#: chem_dialog.cpp:21
+msgid "Add chemical to calorimeter"
+msgstr ""
+
+#: chem_dialog.cpp:24
+msgid "Add"
+msgstr ""
+
+#: chem_dialog.cpp:29
+msgid "grams"
+msgstr ""
+
+#: chem_dialog.cpp:30 chem_dialog.cpp:67
+msgid "mL"
+msgstr ""
+
+#: chem_dialog.cpp:33
+msgid "of"
+msgstr ""
+
+#: chem_dialog.cpp:37
+msgid "KHP"
+msgstr ""
+
+#: chem_dialog.cpp:38
+msgid "acetic acid"
+msgstr ""
+
+#: chem_dialog.cpp:39
+msgid "citric acid"
+msgstr ""
+
+#: chem_dialog.cpp:40
+msgid "ascorbic acid"
+msgstr ""
+
+#: chem_dialog.cpp:41
+msgid "phosphoric acid"
+msgstr ""
+
+#: chem_dialog.cpp:42
+msgid "cola"
+msgstr ""
+
+#: chem_dialog.cpp:45
+msgid "H2O2"
+msgstr ""
+
+#: chem_dialog.cpp:46
+msgid "(NH4)2SO4"
+msgstr ""
+
+#: chem_dialog.cpp:47
+msgid "MgSO4"
+msgstr ""
+
+#: chem_dialog.cpp:50
+msgid "Table salt"
+msgstr ""
+
+#: chem_dialog.cpp:51
+msgid "Clcium chloride"
+msgstr ""
+
+#: chem_dialog.cpp:52
+msgid "Table sugar"
+msgstr ""
+
+#: chem_dialog.cpp:53
+msgid "Aspirin"
+msgstr ""
+
+#: chem_dialog.cpp:56
+msgid "Cobalt chloride"
+msgstr ""
+
+#: chem_dialog.cpp:57
+msgid "Copper sulfate"
+msgstr ""
+
+#: chem_dialog.cpp:58
+msgid "Nickel sulfate"
+msgstr ""
+
+#: chem_dialog.cpp:60
+msgid "Dissolve in water:"
+msgstr ""
+
+#: electro.cpp:56 kinetic.cpp:53
+msgid "Temperature = 25 C, Voltage = %1 V"
+msgstr ""
+
+#: electrodialog.cpp:18
+msgid "Set up electrochemistry experiment"
+msgstr ""
+
+#: electrodialog.cpp:21
+msgid "Left beaker"
+msgstr ""
+
+#: electrodialog.cpp:24
+msgid "Right beaker"
+msgstr ""
+
+#: electrodialog.cpp:27 electrodialog.cpp:30
+msgid "Electrode metal:"
+msgstr ""
+
+#: electrodialog.cpp:32 electrodialog.cpp:42
+msgid "Silver"
+msgstr ""
+
+#: electrodialog.cpp:33 electrodialog.cpp:43
+msgid "Copper"
+msgstr ""
+
+#: electrodialog.cpp:34 electrodialog.cpp:44
+msgid "Lead"
+msgstr ""
+
+#: electrodialog.cpp:35 electrodialog.cpp:45
+msgid "Tin"
+msgstr ""
+
+#: electrodialog.cpp:36 electrodialog.cpp:46
+msgid "Nickel"
+msgstr ""
+
+#: electrodialog.cpp:37 electrodialog.cpp:47
+msgid "Iron(II)"
+msgstr ""
+
+#: electrodialog.cpp:38 electrodialog.cpp:48
+msgid "Chromium"
+msgstr ""
+
+#: electrodialog.cpp:39 electrodialog.cpp:49
+msgid "Zinc"
+msgstr ""
+
+#: electrodialog.cpp:53 electrodialog.cpp:56
+msgid "Salt concentration (M):"
+msgstr ""
+
+#: helpwindow.cpp:77
+msgid "&Backward"
+msgstr ""
+
+#: helpwindow.cpp:80
+msgid "&Forward"
+msgstr ""
+
+#: helpwindow.cpp:82
+msgid "&Home"
+msgstr ""
+
+#: helpwindow.cpp:85
+msgid "&About ..."
+msgstr ""
+
+#: helpwindow.cpp:88
+msgid "&Go"
+msgstr ""
+
+#: helpwindow.cpp:104
+msgid "Backward"
+msgstr ""
+
+#: helpwindow.cpp:107
+msgid "Forward"
+msgstr ""
+
+#: helpwindow.cpp:110
+msgid "Home"
+msgstr ""
+
+#: indicatordialog.cpp:20
+msgid "Indicator: "
+msgstr ""
+
+#: indicatordialog.cpp:22
+msgid "Bromophenol blue"
+msgstr ""
+
+#: indicatordialog.cpp:23
+msgid "Bromothymol blue"
+msgstr ""
+
+#: indicatordialog.cpp:24
+msgid "Litmus"
+msgstr ""
+
+#: indicatordialog.cpp:25
+msgid "Methyl orange"
+msgstr ""
+
+#: indicatordialog.cpp:26
+msgid "Methyl red"
+msgstr ""
+
+#: indicatordialog.cpp:27
+msgid "Phenol red"
+msgstr ""
+
+#: indicatordialog.cpp:28
+msgid "Phenolphthalein"
+msgstr ""
+
+#: spec.cpp:53
+msgid "Wavelength = %1 nm; A = %2"
+msgstr ""
+
+#: spec.cpp:239
+msgid "Set wavelength"
+msgstr ""
+
+#: spec.cpp:240
+msgid "Enter the wavelength in nanometers:"
+msgstr ""
+
+#: spec.cpp:257
+msgid "Wavelength scan"
+msgstr ""
+
+#: spec.cpp:258
+msgid ""
+"The spectrophotometer will now scan from 390 nm to 740 nm and display the "
+"results."
+msgstr ""
+
+#: spec.cpp:259
+msgid "Wavelength, absorbance\n"
+msgstr ""
+
+#: textdialog.cpp:17
+msgid "Output"
+msgstr ""
+
+#: titration.cpp:52
+msgid "Volume dispensed = %1 mL; pH = %2"
+msgstr ""
+
+#: vapor.cpp:56
+msgid "Temperature = %1 C; air volume = %2 mL"
+msgstr ""
+
+#: vapor.cpp:87
+msgid "Set up experiment"
+msgstr ""
+
+#: vapor.cpp:88
+msgid "Fill beaker with:"
+msgstr ""
+
+#: vapor.cpp:89
+msgid "&Water"
+msgstr ""
+
+#: vapor.cpp:89
+msgid "&Ethanol"
+msgstr ""
+
+#: vapor.cpp:90
+msgid "&Hexane"
+msgstr ""
+
+#: vapor.cpp:116
+msgid "Click on the flask to start heating."
+msgstr ""
