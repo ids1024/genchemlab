@@ -2,7 +2,7 @@
 AC_INIT([genchemlab], [0.1], [herger@chemistry.gatech.edu])
 AC_CONFIG_SRCDIR([config.h.in])
 AM_CONFIG_HEADER([config.h])
-AM_INIT_AUTOMAKE(genchemlab, 0.1)
+AM_INIT_AUTOMAKE
 top_builddir=`pwd`
 AC_SUBST(top_builddir)
 
