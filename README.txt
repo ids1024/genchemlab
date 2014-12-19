@@ -1,3 +1,7 @@
+This is a fork of the original program updated to work with Qt4.
+-------------------------------------------------------------------------------
+
+
 Welcome to the General Chemistry Lab Simulator! (version 1.0)
 
 Written by Bryan Herger, Georgia Institute of Technology,
