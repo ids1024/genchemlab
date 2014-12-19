@@ -72,11 +72,11 @@ TitrationDialog::TitrationDialog(QWidget *parent, QString name):
   QPushButton *ok, *dismiss;
   ok = new QPushButton(tr("OK"), this);
   ok->setGeometry(50,200,80,30);
-  ok->setPalette(QPalette(lightGray));
+  ok->setPalette(QPalette(Qt::lightGray));
   connect(ok, SIGNAL(clicked()), SLOT(accept()) );
   dismiss = new QPushButton(tr("Cancel"), this);
   dismiss->setGeometry(140,200,80,30);
-  dismiss->setPalette(QPalette(lightGray));
+  dismiss->setPalette(QPalette(Qt::lightGray));
   connect(dismiss, SIGNAL(clicked()), SLOT(reject()) );
 }
 

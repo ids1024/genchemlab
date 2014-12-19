@@ -3,6 +3,9 @@
 #include "chem_dialog.h"
 
 #include <qmessagebox.h>
+//Added by qt3to4:
+#include <QMouseEvent>
+#include <QKeyEvent>
 
 #include <iostream>
 #include <math.h>
@@ -33,7 +36,7 @@ Electro::Electro(QWidget *parent, const char *name)
 {
   setPalette(QPalette(QColor(255,255,255))); 
   setMouseTracking(false);
-  setFocusPolicy(ClickFocus);
+  setFocusPolicy(Qt::ClickFocus);
   dripRate = 0.0;
   startY = -1;
   cmode = 0; running = false; timeCount = 0;

@@ -8,6 +8,9 @@
 #include <qtimer.h>
 #include <qinputdialog.h>
 #include <qmessagebox.h>
+//Added by qt3to4:
+#include <QMouseEvent>
+#include <QKeyEvent>
 
 #include "point3d.h"
 #include "labwidget.h"

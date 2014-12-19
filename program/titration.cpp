@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <math.h>
+//Added by qt3to4:
+#include <QMouseEvent>
+#include <QKeyEvent>
 
 GLfloat glass[] = { 0.4f, 0.4f, 0.4f, 0.4f };	// Transparent material
 GLfloat beakerglass[] = { 0.3f, 0.3f, 0.3f, 0.4f };
@@ -25,7 +28,7 @@ Titration::Titration(QWidget *parent, const char *name)
 {
   setPalette(QPalette(QColor(255,255,255))); 
   setMouseTracking(false);
-  setFocusPolicy(ClickFocus);
+  setFocusPolicy(Qt::ClickFocus);
   dripRate = 0.0;
   startY = -1;
   cn = 0;

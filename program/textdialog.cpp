@@ -15,12 +15,12 @@ TextDialog::TextDialog(QString t1, QWidget *parent, QString name):
         QDialog(parent, name, TRUE)
 {
   setCaption( tr("Output") );
-  QTextBrowser *te = new QTextBrowser(this, "good label");
+  Q3TextBrowser *te = new Q3TextBrowser(this, "good label");
   te->setText(t1);
   te->setGeometry(10,10,230,200);
   QPushButton *ok;
   ok = new QPushButton(tr("OK"), this);
   ok->setGeometry(85,250,80,30);
-  ok->setPalette(QPalette(lightGray));
+  ok->setPalette(QPalette(Qt::lightGray));
   connect(ok, SIGNAL(clicked()), SLOT(accept()) );
 }

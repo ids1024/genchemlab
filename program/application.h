@@ -12,10 +12,13 @@
 #define APPLICATION_H
 
 #include <qmainwindow.h>
+//Added by qt3to4:
+#include <QCloseEvent>
+#include <QLabel>
 
 #include "labwidget.h"
 
-class QTextEdit;
+class Q3TextEdit;
 class QLabel;
 class Titration;
 
@@ -59,10 +62,10 @@ private slots:
 
 private:
     //QTextEdit *e;
-    QLabel *ll, *sl;
     QString filename;
     LabWidget *t1;
-    int select_id, widget_id;
+    QAction * select_id;
+    int widget_id;
 };
 
 

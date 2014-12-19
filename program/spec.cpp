@@ -7,6 +7,10 @@
 #ifdef UNIX
 #include <unistd.h>
 #endif
+//Added by qt3to4:
+#include <QMouseEvent>
+#include <QKeyEvent>
+#include <GL/glu.h>
 
 GLfloat sglass[] = { 0.4f, 0.4f, 0.4f, 0.15f };	// Transparent material
 //GLfloat beakerglass[] = { 0.3f, 0.3f, 0.3f, 0.7f };
@@ -30,7 +34,7 @@ Spectrometry::Spectrometry(QWidget *parent, const char *name)
 {
   setPalette(QPalette(QColor(255,255,255))); 
   setMouseTracking(false);
-  setFocusPolicy(ClickFocus);
+  setFocusPolicy(Qt::ClickFocus);
   dripRate = 0.0;
   startY = -1;
   cn = 0;

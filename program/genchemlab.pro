@@ -33,3 +33,7 @@ TRANSLATIONS = genchemlab_en.ts genchemlab_fr.ts genchemlab_de.ts \
         genchemlab_pl.ts genchemlab_nl.ts genchemlab_it.ts genchemlab_es.ts \
         genchemlab_pt.ts genchemlab_pt_BR.ts genchemlab_dk.ts genchemlab_jp.ts
 TARGET = genchemlab
+#The following line was inserted by qt3to4
+QT +=  opengl qt3support 
+#The following line was inserted by qt3to4
+QT +=  

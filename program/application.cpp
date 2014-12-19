@@ -12,23 +12,24 @@
 
 #include <qimage.h>
 #include <qpixmap.h>
-#include <qtoolbar.h>
+#include <q3toolbar.h>
 #include <qtoolbutton.h>
-#include <qpopupmenu.h>
 #include <qmenubar.h>
 //#include <qtextedit.h>
 #include <qlabel.h>
 #include <qfile.h>
-#include <qfiledialog.h>
+#include <q3filedialog.h>
 #include <qstatusbar.h>
 #include <qmessagebox.h>
 #include <qprinter.h>
 #include <qapplication.h>
-#include <qaccel.h>
-#include <qtextstream.h>
+#include <q3accel.h>
+#include <q3textstream.h>
 #include <qpainter.h>
-#include <qpaintdevicemetrics.h>
-#include <qwhatsthis.h>
+#include <q3paintdevicemetrics.h>
+#include <q3whatsthis.h>
+//Added by qt3to4:
+#include <QCloseEvent>
 
 #include "application.h"
 #include "titration.h"
@@ -43,17 +44,17 @@
 #include "indicatordialog.h"
 #include "extract.h"
 #include "helpwindow.h"
+#include <QDesktopWidget>
 
 extern QString RingDir;
 
 ApplicationWindow::ApplicationWindow()
-    : QMainWindow( 0, "example application main window", WDestructiveClose )
+    : QMainWindow( 0, "example application main window", Qt::WDestructiveClose )
 {
   t1 = 0;
-  QPopupMenu * file = new QPopupMenu( this );
-  menuBar()->insertItem( tr("&File"), file );
+  QMenu * file = menuBar()->addMenu( tr("&File") );
  
-  file->insertItem( tr("&New"), this, SLOT(newDoc()), CTRL+Key_N );
+  file->addAction( tr("&New"), this, SLOT(newDoc()), Qt::CTRL+Qt::Key_N );
 
   /*
   int id;
@@ -64,49 +65,43 @@ ApplicationWindow::ApplicationWindow()
 			 this, SLOT(save()), CTRL+Key_S );
   */
 
-  file->insertSeparator();
+  file->addSeparator();
 
-  file->insertItem( tr("&Close"), this, SLOT(close()), CTRL+Key_W );
+  file->addAction( tr("&Close"), this, SLOT(close()), Qt::CTRL+Qt::Key_W );
 
-  file->insertItem( tr("&Quit"), qApp, SLOT( closeAllWindows() ), CTRL+Key_Q );
+  file->addAction( tr("&Quit"), qApp, SLOT( closeAllWindows() ), Qt::CTRL+Qt::Key_Q );
 
-  QPopupMenu * switcher = new QPopupMenu( this );
-  select_id = menuBar()->insertItem( tr("&Select Lab"), switcher );
+  QMenu * switcher = new QMenu( tr("&Select Lab"), this );
+  select_id = menuBar()->addMenu( switcher );
 
-  switcher->insertItem( tr("&Titration"), this, SLOT(switchToWidget1()) );
-  //switcher->insertItem( tr("&Qualitative analysis"), this, 
+  switcher->addAction( tr("&Titration"), this, SLOT(switchToWidget1()) );
+  //switcher->addAction( tr("&Qualitative analysis"), this, 
   //		SLOT(switchToWidget2()) );
-  switcher->insertItem( tr("&Calorimetry"), this, SLOT(switchToWidget3()) );
-  switcher->insertItem( tr("&Freezing point depression"), this, 
+  switcher->addAction( tr("&Calorimetry"), this, SLOT(switchToWidget3()) );
+  switcher->addAction( tr("&Freezing point depression"), this, 
 			SLOT(switchToWidget4()) );
-  switcher->insertItem( tr("&Vapor pressure"), this, 
+  switcher->addAction( tr("&Vapor pressure"), this, 
 			SLOT(switchToWidget10()) );
-  switcher->insertItem( tr("&Electrochemistry"), this, 
+  switcher->addAction( tr("&Electrochemistry"), this, 
 			SLOT(switchToWidget11()) );
-  switcher->insertItem( tr("&Spectrophotometry"), this, 
+  switcher->addAction( tr("&Spectrophotometry"), this, 
 			SLOT(switchToWidget5()) );
-  switcher->insertItem( tr("E&xtraction"), this, 
+  switcher->addAction( tr("E&xtraction"), this, 
 			SLOT(switchToWidget12()) );
 
-  menuBar()->insertSeparator();
+  menuBar()->addSeparator();
 
-  QPopupMenu * help = new QPopupMenu( this );
-  menuBar()->insertItem( tr("&Help"), help );
+  QMenu * help = menuBar()->addMenu( tr("&Help") );
 
-  help->insertItem( tr("&Help"), this, SLOT(getHelp()), Key_F1 );
-  help->insertSeparator();
-  help->insertItem( tr("&About"), this, SLOT(about()) );
-  //help->insertItem( "What's &This", this, SLOT(whatsThis()), SHIFT+Key_F1 );
+  help->addAction( tr("&Help"), this, SLOT(getHelp()), Qt::Key_F1 );
+  help->addSeparator();
+  help->addAction( tr("&About"), this, SLOT(about()) );
+  //help->addAction( "What's &This", this, SLOT(whatsThis()), SHIFT+Key_F1 );
 
   //e = new QTextEdit( this, "editor" );
   //e->setFocus();
-  ll = new QLabel(this, "label");
-  ll->setText("first widget");
   //setCentralWidget( ll );
   statusBar()->message( tr("Choose a lab from the 'Select Lab' menu") );
-
-  sl = new QLabel(this, "label");
-  sl->setText("second widget");
 
   resize(400, 400);
 }
@@ -159,7 +154,7 @@ void ApplicationWindow::newDoc()
 
 void ApplicationWindow::choose()
 {
-    QString fn = QFileDialog::getOpenFileName( QString::null, QString::null,
+    QString fn = Q3FileDialog::getOpenFileName( QString::null, QString::null,
 					       this);
     if ( !fn.isEmpty() )
 	load( fn );
@@ -171,10 +166,10 @@ void ApplicationWindow::choose()
 void ApplicationWindow::load( const QString &fileName )
 {
     QFile f( fileName );
-    if ( !f.open( IO_ReadOnly ) )
+    if ( !f.open( QIODevice::ReadOnly ) )
 	return;
 
-    QTextStream ts( &f );
+    Q3TextStream ts( &f );
     setCaption( fileName );
     statusBar()->message( "Loaded document " + fileName, 2000 );
 }
@@ -189,13 +184,13 @@ void ApplicationWindow::save()
 
     QString text = "";
     QFile f( filename );
-    if ( !f.open( IO_WriteOnly ) ) {
+    if ( !f.open( QIODevice::WriteOnly ) ) {
 	statusBar()->message( QString("Could not write to %1").arg(filename),
 			      2000 );
 	return;
     }
 
-    QTextStream t( &f );
+    Q3TextStream t( &f );
     t << text;
     f.close();
 
@@ -207,7 +202,7 @@ void ApplicationWindow::save()
 
 void ApplicationWindow::saveAs()
 {
-    QString fn = QFileDialog::getSaveFileName( QString::null, QString::null,
+    QString fn = Q3FileDialog::getSaveFileName( QString::null, QString::null,
 					       this );
     if ( !fn.isEmpty() ) {
 	filename = fn;
@@ -261,10 +256,10 @@ void ApplicationWindow::switchToWidget1() {
 	  SLOT(slotSetStatusBar(QString)) );
   setCentralWidget( t1 );
   t1->show();
-  menuBar()->removeItem(select_id);
+  menuBar()->removeAction(select_id);
   statusBar()->message( tr("Starting titration lab.") );
 
-  QPopupMenu * adder = new QPopupMenu( this );
+  QMenu * adder = new QMenu( this );
   menuBar()->insertItem( tr("&Titration"), adder, -1, 1 );
 
   adder->insertItem( tr("&Set up"), t1, SLOT(showSetup()) );
@@ -281,7 +276,7 @@ void ApplicationWindow::switchToWidget2() {
   setCentralWidget( t1 );
   t1->show();
 
-  menuBar()->removeItem(select_id);
+  menuBar()->removeAction(select_id);
   statusBar()->message( tr("Starting qualitative analysis lab.") );
   setCaption( tr("GenChemLab - Qualitative analysis") );
 }
@@ -294,9 +289,9 @@ void ApplicationWindow::switchToWidget3() {
   setCentralWidget( t1 );
   t1->show();
 
-  menuBar()->removeItem(select_id);
+  menuBar()->removeAction(select_id);
 
-  QPopupMenu * adder = new QPopupMenu( this );
+  QMenu * adder = new QMenu( this );
   menuBar()->insertItem( tr("&Calorimetry"), adder, -1, 1 );
 
   adder->insertItem( tr("&Find calorimeter constant"), t1, 
@@ -315,9 +310,9 @@ void ApplicationWindow::switchToWidget4() {
   setCentralWidget( t1 );
   t1->show();
 
-  menuBar()->removeItem(select_id);
+  menuBar()->removeAction(select_id);
 
-  QPopupMenu * adder = new QPopupMenu( this );
+  QMenu * adder = new QMenu( this );
   menuBar()->insertItem( tr("&Freezing-Point"), adder, -1, 1 );
 
   adder->insertItem( tr("&Set up experiment"), this, SLOT(addToBeaker()) );  
@@ -336,9 +331,9 @@ void ApplicationWindow::switchToWidget5() {
   setCentralWidget( t1 );
   t1->show();
 
-  menuBar()->removeItem(select_id);
+  menuBar()->removeAction(select_id);
 
-  QPopupMenu * adder = new QPopupMenu( this );
+  QMenu * adder = new QMenu( this );
   menuBar()->insertItem( tr("&Spectrophotometry"), adder, -1, 1 );
 
   adder->insertItem( tr("&Set wavelength"), t1, SLOT(setWavelength()) );  
@@ -358,9 +353,9 @@ void ApplicationWindow::switchToWidget10() {
   setCentralWidget( t1 );
   t1->show();
 
-  menuBar()->removeItem(select_id);
+  menuBar()->removeAction(select_id);
 
-  QPopupMenu * adder = new QPopupMenu( this );
+  QMenu * adder = new QMenu( this );
   menuBar()->insertItem( tr("&Vapor pressure"), adder, -1, 1 );
 
   adder->insertItem( tr("&Set up"), this, 
@@ -378,9 +373,9 @@ void ApplicationWindow::switchToWidget11() {
   setCentralWidget( t1 );
   t1->show();
 
-  menuBar()->removeItem(select_id);
+  menuBar()->removeAction(select_id);
 
-  QPopupMenu * adder = new QPopupMenu( this );
+  QMenu * adder = new QMenu( this );
   menuBar()->insertItem( tr("&Electrochemistry"), adder, -1, 1 );
 
   adder->insertItem( tr("&Set up"), this, 
@@ -398,9 +393,8 @@ void ApplicationWindow::switchToWidget12() {
   setCentralWidget( t1 );
   t1->show();
 
-  menuBar()->removeItem(select_id);
-
-  QPopupMenu * adder = new QPopupMenu( this );
+  menuBar()->removeAction(select_id);
+  QMenu * adder = new QMenu( this );
   menuBar()->insertItem( tr("E&xtraction"), adder, -1, 1 );
 
   adder->insertItem( tr("E&xtract"), this, 

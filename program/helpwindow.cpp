@@ -11,28 +11,30 @@
 #include "helpwindow.h"
 #include <qstatusbar.h>
 #include <qpixmap.h>
-#include <qpopupmenu.h>
+#include <q3popupmenu.h>
 #include <qmenubar.h>
-#include <qtoolbar.h>
+#include <q3toolbar.h>
 #include <qtoolbutton.h>
-#include <qiconset.h>
+#include <qicon.h>
 #include <qfile.h>
-#include <qtextstream.h>
-#include <qstylesheet.h>
+#include <q3textstream.h>
+#include <q3stylesheet.h>
 #include <qmessagebox.h>
-#include <qfiledialog.h>
+#include <q3filedialog.h>
 #include <qapplication.h>
 #include <qcombobox.h>
 #include <qevent.h>
 #include <qlineedit.h>
-#include <qobjectlist.h>
+#include <qobject.h>
 #include <qfileinfo.h>
 #include <qfile.h>
 #include <qdatastream.h>
 #include <qprinter.h>
-#include <qsimplerichtext.h>
+#include <q3simplerichtext.h>
 #include <qpainter.h>
-#include <qpaintdevicemetrics.h>
+#include <q3paintdevicemetrics.h>
+//Added by qt3to4:
+#include <Q3Frame>
 
 #include <ctype.h>
 
@@ -44,13 +46,13 @@ extern QString RingDir;
 
 HelpWindow::HelpWindow( const QString& home_, const QString& _path,
 			QWidget* parent, const char *name )
-    : QMainWindow( parent, name, WDestructiveClose ),
+    : Q3MainWindow( parent, name, Qt::WDestructiveClose ),
       pathCombo( 0 ), selectedURL()
 {
-    browser = new QTextBrowser( this );
+    browser = new Q3TextBrowser( this );
 
     browser->mimeSourceFactory()->setFilePath( _path );
-    browser->setFrameStyle( QFrame::Panel | QFrame::Sunken );
+    browser->setFrameStyle( Q3Frame::Panel | Q3Frame::Sunken );
     connect( browser, SIGNAL( textChanged() ),
 	     this, SLOT( textChanged() ) );
 
@@ -64,24 +66,24 @@ HelpWindow::HelpWindow( const QString& home_, const QString& _path,
 
     resize( 640,700 );
 
-    QPopupMenu* file = new QPopupMenu( this );
-    file->insertItem( tr("&Close"), this, SLOT( close() ), CTRL+Key_W );
+    Q3PopupMenu* file = new Q3PopupMenu( this );
+    file->insertItem( tr("&Close"), this, SLOT( close() ), Qt::CTRL+Qt::Key_W );
 
     // The same three icons are used twice each.
-    QIconSet icon_back( QPixmap( RingDir + "back.xpm" ) );
-    QIconSet icon_forward( QPixmap( RingDir + "forward.xpm" ) );
-    QIconSet icon_home( QPixmap( RingDir + "home.xpm" ) );
+    QIcon icon_back( QPixmap( RingDir + "back.xpm" ) );
+    QIcon icon_forward( QPixmap( RingDir + "forward.xpm" ) );
+    QIcon icon_home( QPixmap( RingDir + "home.xpm" ) );
 
-    QPopupMenu* go = new QPopupMenu( this );
+    Q3PopupMenu* go = new Q3PopupMenu( this );
     backwardId = go->insertItem( icon_back,
 				 tr("&Backward"), browser, SLOT( backward() ),
-				 CTRL+Key_Left );
+				 Qt::CTRL+Qt::Key_Left );
     forwardId = go->insertItem( icon_forward,
 				tr("&Forward"), browser, SLOT( forward() ),
-				CTRL+Key_Right );
+				Qt::CTRL+Qt::Key_Right );
     go->insertItem( icon_home, tr("&Home"), browser, SLOT( home() ) );
 
-    QPopupMenu* help = new QPopupMenu( this );
+    Q3PopupMenu* help = new Q3PopupMenu( this );
     help->insertItem( tr("&About ..."), this, SLOT( about() ) );
 
     menuBar()->insertItem( tr("&File"), file );
@@ -97,7 +99,7 @@ HelpWindow::HelpWindow( const QString& home_, const QString& _path,
 	     this, SLOT( setForwardAvailable( bool ) ) );
 
 
-    QToolBar* toolbar = new QToolBar( this );
+    Q3ToolBar* toolbar = new Q3ToolBar( this );
     addToolBar( toolbar, "Toolbar");
     QToolButton* button;
 
@@ -117,8 +119,8 @@ HelpWindow::HelpWindow( const QString& home_, const QString& _path,
     toolbar->setStretchableWidget( pathCombo );
     setRightJustification( TRUE );
 #if QT_VERSION >= 300
-    setDockEnabled( DockLeft, FALSE );
-    setDockEnabled( DockRight, FALSE );
+    setDockEnabled( Qt::DockLeft, FALSE );
+    setDockEnabled( Qt::DockRight, FALSE );
 #endif
 
     pathCombo->insertItem( home_ );

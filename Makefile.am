@@ -41,4 +41,3 @@ uninstall-local:
 	  echo " rm -f $(DESTDIR)$(pkgdatadir)/$$f"; \
 	  rm -f $(DESTDIR)$(pkgdatadir)/$$f; \
 	done
-

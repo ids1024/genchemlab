@@ -1,6 +1,7 @@
 #include "labwidget.h"
 
 #include <math.h>
+#include <GL/glu.h>
 
 LabWidget::LabWidget(QWidget *parent, const char *name)
   : QGLWidget(parent, name)
