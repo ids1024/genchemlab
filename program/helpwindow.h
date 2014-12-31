@@ -11,22 +11,22 @@
 #ifndef HELPWINDOW_H
 #define HELPWINDOW_H
 
-#include <q3mainwindow.h>
-#include <q3textbrowser.h>
+#include <qmainwindow.h>
+#include <qtextbrowser.h>
 #include <qstringlist.h>
 #include <qmap.h>
 #include <qdir.h>
 //Added by qt3to4:
-#include <Q3PopupMenu>
+#include <QMenu>
 
 class QComboBox;
-class Q3PopupMenu;
+class QMenu;
 
-class HelpWindow : public Q3MainWindow
+class HelpWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    HelpWindow( const QString& home_,  const QString& path, QWidget* parent = 0, const char *name=0 );
+    HelpWindow( const QString& home_, QWidget* parent = 0, const char *name=0 );
     ~HelpWindow();
 
 private slots:
@@ -39,9 +39,9 @@ private slots:
     void pathSelected( const QString & );
     
 private:
-    Q3TextBrowser* browser;
+    QTextBrowser* browser;
     QComboBox *pathCombo;
-    int backwardId, forwardId;
+    QAction *backward_action, *forward_action;
     QString selectedURL;
 };
 

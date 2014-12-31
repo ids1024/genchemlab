@@ -12,10 +12,13 @@
 #include "textdialog.h"
 
 TextDialog::TextDialog(QString t1, QWidget *parent, QString name):
-        QDialog(parent, name, TRUE)
+        QDialog(parent)
 {
-  setCaption( tr("Output") );
-  Q3TextBrowser *te = new Q3TextBrowser(this, "good label");
+  setObjectName(name);
+  setModal(TRUE);
+  setWindowTitle( tr("Output") );
+  QTextBrowser *te = new QTextBrowser(this);
+  te->setObjectName("good label");
   te->setText(t1);
   te->setGeometry(10,10,230,200);
   QPushButton *ok;

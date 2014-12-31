@@ -12,21 +12,24 @@
 #include "indicatordialog.h"
 
 IndicatorDialog::IndicatorDialog(QWidget *parent, QString name):
-        QDialog(parent, name, TRUE)
+        QDialog(parent)
 {
-  setCaption( tr("Choose indicator") );
-  QLabel *l1 = new QLabel(this, "Paper size label");
+  setObjectName(name);
+  setModal(TRUE);
+  setWindowTitle( tr("Choose indicator") );
+  QLabel *l1 = new QLabel(this);
+  l1->setObjectName("Paper size label");
   l1->setGeometry(10,10,80,30);
   l1->setText( tr("Indicator: ") );
-  inChoice = new QComboBox(false, this);
-  inChoice->insertItem( tr("<none>") );
-  inChoice->insertItem( tr("Bromophenol blue") );
-  inChoice->insertItem( tr("Bromothymol blue") );
-  inChoice->insertItem( tr("Litmus") );
-  inChoice->insertItem( tr("Methyl orange") );
-  inChoice->insertItem( tr("Methyl red") );
-  inChoice->insertItem( tr("Phenol red") );
-  inChoice->insertItem( tr("Phenolphthalein") );
+  inChoice = new QComboBox(this);
+  inChoice->insertItem( 0, tr("<none>") );
+  inChoice->insertItem( 1, tr("Bromophenol blue") );
+  inChoice->insertItem( 2, tr("Bromothymol blue") );
+  inChoice->insertItem( 3, tr("Litmus") );
+  inChoice->insertItem( 4, tr("Methyl orange") );
+  inChoice->insertItem( 5, tr("Methyl red") );
+  inChoice->insertItem( 6, tr("Phenol red") );
+  inChoice->insertItem( 7, tr("Phenolphthalein") );
   //inChoice->insertItem( tr("Starch") );
   inChoice->setGeometry(100,10,140,30);
   QPushButton *ok, *dismiss;
@@ -42,5 +45,5 @@ IndicatorDialog::IndicatorDialog(QWidget *parent, QString name):
 
 int IndicatorDialog::getIndicator() {
   // see chemicals.h
-  return 999 + inChoice->currentItem() * 10;
+  return 999 + inChoice->currentIndex() * 10;
 }

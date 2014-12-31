@@ -12,17 +12,20 @@
 #include "buretdialog.h"
 
 BuretDialog::BuretDialog(QWidget *parent, QString name):
-        QDialog(parent, name, TRUE)
+        QDialog(parent)
 {
-  setCaption( tr("Choose indicator") );
-  QLabel *l1 = new QLabel(this, "Paper size label");
+  setObjectName(name);
+  setModal(TRUE);
+  setWindowTitle( tr("Choose indicator") );
+  QLabel *l1 = new QLabel(this);
+  l1->setObjectName("Paper size label");
   l1->setGeometry(10,10,80,30);
   l1->setText( tr("Fill buret with: ") );
-  buretChoice = new QComboBox(false, this);
-  buretChoice->insertItem("0.01 M NaOH");
-  buretChoice->insertItem("0.1 M NaOH");
-  buretChoice->insertItem("1 M NaOH");
-  buretChoice->insertItem("0.1 M HCl");
+  buretChoice = new QComboBox(this);
+  buretChoice->insertItem(0, "0.01 M NaOH");
+  buretChoice->insertItem(1, "0.1 M NaOH");
+  buretChoice->insertItem(2, "1 M NaOH");
+  buretChoice->insertItem(3, "0.1 M HCl");
   //buretChoice->insertItem("0.1 M Na2S2O3");
   buretChoice->setGeometry(100,10,120,30);
   QPushButton *ok, *dismiss;
@@ -37,7 +40,7 @@ BuretDialog::BuretDialog(QWidget *parent, QString name):
 }
 
 int BuretDialog::getChoice() {
-  int cx = buretChoice->currentItem();
+  int cx = buretChoice->currentIndex();
 
   int cret = 0;
 

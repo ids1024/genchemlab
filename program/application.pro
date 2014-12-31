@@ -5,6 +5,7 @@ SOURCES		= application.cpp \
 		  main.cpp
 TARGET		= application
 DEPENDPATH=../../include
+RESOURCES     = application.qrc
 #The following line was commented out by qt3to4
 #REQUIRES=full-config
 #The following line was inserted by qt3to4

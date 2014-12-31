@@ -64,7 +64,8 @@ private:
     //QTextEdit *e;
     QString filename;
     LabWidget *t1;
-    QAction * select_id;
+    QAction * select_action;
+    QAction * help_action;
     int widget_id;
 };
 

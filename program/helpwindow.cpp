@@ -11,16 +11,15 @@
 #include "helpwindow.h"
 #include <qstatusbar.h>
 #include <qpixmap.h>
-#include <q3popupmenu.h>
+#include <qmenu.h>
 #include <qmenubar.h>
-#include <q3toolbar.h>
+#include <qtoolbar.h>
 #include <qtoolbutton.h>
 #include <qicon.h>
 #include <qfile.h>
-#include <q3textstream.h>
-#include <q3stylesheet.h>
+#include <qtextstream.h>
 #include <qmessagebox.h>
-#include <q3filedialog.h>
+#include <qfiledialog.h>
 #include <qapplication.h>
 #include <qcombobox.h>
 #include <qevent.h>
@@ -30,11 +29,9 @@
 #include <qfile.h>
 #include <qdatastream.h>
 #include <qprinter.h>
-#include <q3simplerichtext.h>
 #include <qpainter.h>
-#include <q3paintdevicemetrics.h>
 //Added by qt3to4:
-#include <Q3Frame>
+#include <QFrame>
 
 #include <ctype.h>
 
@@ -42,17 +39,17 @@
 #include "forward.xpm"
 #include "home.xpm"
 
-extern QString RingDir;
-
-HelpWindow::HelpWindow( const QString& home_, const QString& _path,
+HelpWindow::HelpWindow( const QString& home_,
 			QWidget* parent, const char *name )
-    : Q3MainWindow( parent, name, Qt::WDestructiveClose ),
+//    : QMainWindow( parent, name, Qt::WDestructiveClose ), TODO: Important?
+    : QMainWindow( parent ),
       pathCombo( 0 ), selectedURL()
 {
-    browser = new Q3TextBrowser( this );
+    setObjectName(name);
+    browser = new QTextBrowser( this );
 
-    browser->mimeSourceFactory()->setFilePath( _path );
-    browser->setFrameStyle( Q3Frame::Panel | Q3Frame::Sunken );
+    //browser->mimeSourceFactory()->setFilePath( _path ); TODO: NEEDED?
+    browser->setFrameStyle( QFrame::Panel | QFrame::Sunken );
     connect( browser, SIGNAL( textChanged() ),
 	     this, SLOT( textChanged() ) );
 
@@ -66,64 +63,71 @@ HelpWindow::HelpWindow( const QString& home_, const QString& _path,
 
     resize( 640,700 );
 
-    Q3PopupMenu* file = new Q3PopupMenu( this );
-    file->insertItem( tr("&Close"), this, SLOT( close() ), Qt::CTRL+Qt::Key_W );
+    QMenu* file = menuBar()->addMenu( tr("&File") );;
+    file->addAction( tr("&Close"), this, SLOT( close() ), Qt::CTRL+Qt::Key_W );
 
     // The same three icons are used twice each.
-    QIcon icon_back( QPixmap( RingDir + "back.xpm" ) );
-    QIcon icon_forward( QPixmap( RingDir + "forward.xpm" ) );
-    QIcon icon_home( QPixmap( RingDir + "home.xpm" ) );
+    QIcon icon_back( QPixmap( ":../doc/back.xpm" ) );
+    QIcon icon_forward( QPixmap( ":../doc/forward.xpm" ) );
+    QIcon icon_home( QPixmap( ":../doc/home.xpm" ) );
 
-    Q3PopupMenu* go = new Q3PopupMenu( this );
-    backwardId = go->insertItem( icon_back,
+    QMenu* go = menuBar()->addMenu( tr("&Go") );
+    backward_action = go->addAction( icon_back,
 				 tr("&Backward"), browser, SLOT( backward() ),
 				 Qt::CTRL+Qt::Key_Left );
-    forwardId = go->insertItem( icon_forward,
+    forward_action = go->addAction( icon_forward,
 				tr("&Forward"), browser, SLOT( forward() ),
 				Qt::CTRL+Qt::Key_Right );
-    go->insertItem( icon_home, tr("&Home"), browser, SLOT( home() ) );
+    go->addAction( icon_home, tr("&Home"), browser, SLOT( home() ) );
 
-    Q3PopupMenu* help = new Q3PopupMenu( this );
-    help->insertItem( tr("&About ..."), this, SLOT( about() ) );
+    menuBar()->addSeparator();
 
-    menuBar()->insertItem( tr("&File"), file );
-    menuBar()->insertItem( tr("&Go"), go );
-    menuBar()->insertSeparator();
-    menuBar()->insertItem( tr("&Help"), help );
+    QMenu* help = menuBar()->addMenu( tr("&Help") );
+    help->addAction( tr("&About ..."), this, SLOT( about() ) );
 
-    menuBar()->setItemEnabled( forwardId, FALSE);
-    menuBar()->setItemEnabled( backwardId, FALSE);
+    forward_action->setEnabled(FALSE);
+    backward_action->setEnabled(FALSE);
     connect( browser, SIGNAL( backwardAvailable( bool ) ),
 	     this, SLOT( setBackwardAvailable( bool ) ) );
     connect( browser, SIGNAL( forwardAvailable( bool ) ),
 	     this, SLOT( setForwardAvailable( bool ) ) );
 
 
-    Q3ToolBar* toolbar = new Q3ToolBar( this );
-    addToolBar( toolbar, "Toolbar");
+    QToolBar* toolbar = addToolBar( "ToolBar" );
     QToolButton* button;
 
-    button = new QToolButton( icon_back, tr("Backward"), "", browser, SLOT(backward()), toolbar );
+    button = new QToolButton( toolbar );
+    button->setIcon(icon_back);
+    button->setText(tr("Backward"));
+    connect( button, SIGNAL(triggered(QAction)), browser, SLOT(backward()) );
     connect( browser, SIGNAL( backwardAvailable(bool) ), button, SLOT( setEnabled(bool) ) );
     button->setEnabled( FALSE );
-    button = new QToolButton( icon_forward, tr("Forward"), "", browser, SLOT(forward()), toolbar );
+    button = new QToolButton( toolbar );
+    button->setIcon(icon_forward);
+    button->setText(tr("Forward"));
+    connect( button, SIGNAL(triggered(QAction)), browser, SLOT(forward()) );
     connect( browser, SIGNAL( forwardAvailable(bool) ), button, SLOT( setEnabled(bool) ) );
     button->setEnabled( FALSE );
-    button = new QToolButton( icon_home, tr("Home"), "", browser, SLOT(home()), toolbar );
+    button = new QToolButton( toolbar );
+    button->setIcon(icon_home);
+    button->setText(tr("Home"));
+    connect( button, SIGNAL(triggered(QAction)), browser, SLOT(home()) );
+
 
     toolbar->addSeparator();
 
-    pathCombo = new QComboBox( TRUE, toolbar );
+    pathCombo = new QComboBox( toolbar );
     connect( pathCombo, SIGNAL( activated( const QString & ) ),
 	     this, SLOT( pathSelected( const QString & ) ) );
-    toolbar->setStretchableWidget( pathCombo );
-    setRightJustification( TRUE );
-#if QT_VERSION >= 300
-    setDockEnabled( Qt::DockLeft, FALSE );
-    setDockEnabled( Qt::DockRight, FALSE );
-#endif
+    //toolbar->setStretchableWidget( pathCombo ); TODO: See if it works without this
+    //setRightJustification( TRUE ); TODO: Fix if necessary
+    //Commented out following: TODO: Important?
+//#if QT_VERSION >= 300
+//    setDockEnabled( Qt::DockLeft, FALSE );
+//    setDockEnabled( Qt::DockRight, FALSE );
+//#endif
 
-    pathCombo->insertItem( home_ );
+    pathCombo->insertItem( 0, home_ );
     browser->setFocus();
 
 }
@@ -131,38 +135,38 @@ HelpWindow::HelpWindow( const QString& home_, const QString& _path,
 
 void HelpWindow::setBackwardAvailable( bool b)
 {
-    menuBar()->setItemEnabled( backwardId, b);
+    backward_action->setEnabled(b);
 }
 
 void HelpWindow::setForwardAvailable( bool b)
 {
-    menuBar()->setItemEnabled( forwardId, b);
+    forward_action->setEnabled(b);
 }
 
 
 void HelpWindow::textChanged()
 {
     if ( browser->documentTitle().isNull() )
-	setCaption( "GenChemLab - Help viewer - " + browser->context() );
+	setWindowTitle( "GenChemLab - Help viewer - " + browser->source().toString() );
     else
-	setCaption( "GenChemLab - Help viewer - " + browser->documentTitle() ) ;
+	setWindowTitle( "GenChemLab - Help viewer - " + browser->documentTitle() ) ;
 
-    selectedURL = browser->context();
+    selectedURL = browser->source().toString();
 
     if ( !selectedURL.isEmpty() && pathCombo ) {
 	bool exists = FALSE;
 	int i;
 	for ( i = 0; i < pathCombo->count(); ++i ) {
-	    if ( pathCombo->text( i ) == selectedURL ) {
+	    if ( pathCombo->itemText( i ) == selectedURL ) {
 		exists = TRUE;
 		break;
 	    }
 	}
 	if ( !exists ) {
-	    pathCombo->insertItem( selectedURL, 0 );
-	    pathCombo->setCurrentItem( 0 );
+	    pathCombo->insertItem( 0, selectedURL );
+	    pathCombo->setCurrentIndex( 0 );
 	} else
-	    pathCombo->setCurrentItem( i );
+	    pathCombo->setCurrentIndex( i );
 	selectedURL = QString::null;
     }
 }

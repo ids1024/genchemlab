@@ -12,57 +12,64 @@
 #include "chem_dialog.h"
 
 ChemDialog::ChemDialog(int config, QWidget *parent, QString name):
-	QDialog(parent, name, TRUE)
+	QDialog(parent)
 {
+  setObjectName(name);
+  setModal(TRUE);
   con1 = config;
   if (config == 1)
-    setCaption( tr("Add chemical to beaker") );
+    setWindowTitle( tr("Add chemical to beaker") );
   if (config == 2)
-    setCaption( tr("Add chemical to calorimeter") );
-  QLabel *l1 = new QLabel(this, "Paper size label");
+    setWindowTitle( tr("Add chemical to calorimeter") );
+  QLabel *l1 = new QLabel(this);
+  l1->setObjectName("Paper size label");
   l1->setGeometry(10,10,30,30);
   l1->setText( tr("Add") );
   mass1 = new QLineEdit(this);
   mass1->setGeometry(50,10,50,30);
-  chemUnits = new QComboBox(false, this, "Paper size");
+  chemUnits = new QComboBox(this);
+  chemUnits->setObjectName("Paper size");
   chemUnits->setGeometry(110,10,60,30);
-  chemUnits->insertItem(tr("grams"));
-  chemUnits->insertItem(tr("mL"));
-  QLabel *l2 = new QLabel(this, "Paper size label");
+  chemUnits->insertItem(0, tr("grams"));
+  chemUnits->insertItem(1, tr("mL"));
+  QLabel *l2 = new QLabel(this);
+  l2->setObjectName("Paper size label");
   l2->setGeometry(180,10,18,30);
   l2->setText( tr("of") );
-  chemCompound = new QComboBox(false, this, "compound");
+  chemCompound = new QComboBox(this);
+  chemCompound->setObjectName("compound");
   chemCompound->setGeometry(200,10,110,30);
   if (config == 1) { // titration
-    chemCompound->insertItem(tr("KHP"));
-    chemCompound->insertItem(tr("acetic acid"));
-    chemCompound->insertItem(tr("citric acid"));
-    chemCompound->insertItem(tr("ascorbic acid"));
-    chemCompound->insertItem(tr("phosphoric acid"));
-    chemCompound->insertItem(tr("cola"));    
+    chemCompound->insertItem(0, tr("KHP"));
+    chemCompound->insertItem(1, tr("acetic acid"));
+    chemCompound->insertItem(2, tr("citric acid"));
+    chemCompound->insertItem(3, tr("ascorbic acid"));
+    chemCompound->insertItem(4, tr("phosphoric acid"));
+    chemCompound->insertItem(5, tr("cola"));    
   }
   if (config == 2) { // calorimetry
-    chemCompound->insertItem(tr("H2O2"));
-    chemCompound->insertItem(tr("(NH4)2SO4"));
-    chemCompound->insertItem(tr("MgSO4"));
+    chemCompound->insertItem(0, tr("H2O2"));
+    chemCompound->insertItem(1, tr("(NH4)2SO4"));
+    chemCompound->insertItem(2, tr("MgSO4"));
   }
   if (config == 3) { // freezing point
-    chemCompound->insertItem(tr("table salt"));
-    chemCompound->insertItem(tr("calcium chloride"));
-    chemCompound->insertItem(tr("table sugar"));
-    chemCompound->insertItem(tr("aspirin"));
+    chemCompound->insertItem(0, tr("table salt"));
+    chemCompound->insertItem(1, tr("calcium chloride"));
+    chemCompound->insertItem(2, tr("table sugar"));
+    chemCompound->insertItem(3, tr("aspirin"));
   }
   if (config == 4) { // spec
-    chemCompound->insertItem(tr("cobalt chloride"));
-    chemCompound->insertItem(tr("copper sulfate"));
-    chemCompound->insertItem(tr("nickel sulfate"));
+    chemCompound->insertItem(0, tr("cobalt chloride"));
+    chemCompound->insertItem(1, tr("copper sulfate"));
+    chemCompound->insertItem(2, tr("nickel sulfate"));
   }
   addWater = new QCheckBox( tr("Dissolve in water:"), this);
   addWater->setChecked(true);
   addWater->setGeometry(10,60,120,30);
   mass2 = new QLineEdit(this);
   mass2->setGeometry(135,60,50,30);
-  QLabel *l3 = new QLabel(this, "mL-label2");
+  QLabel *l3 = new QLabel(this);
+  l3->setObjectName("mL-label2");
   l3->setGeometry(190,60,30,30);
   l3->setText( tr("mL") );
   QPushButton *ok, *dismiss;
@@ -79,7 +86,7 @@ ChemDialog::ChemDialog(int config, QWidget *parent, QString name):
 int ChemDialog::selectedChemical() {
   int cx, cret;
   
-  cx = chemCompound->currentItem();
+  cx = chemCompound->currentIndex();
   
   cret = cx;
 

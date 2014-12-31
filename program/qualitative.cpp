@@ -1,5 +1,4 @@
 #include "qualitative.h"
-//Added by qt3to4:
 #include <QMouseEvent>
 #include <QKeyEvent>
 #include <GL/glu.h>
@@ -65,7 +64,8 @@ void Qualitative::process() {
       }
     }
   }
-  emit signalSetStatusBar( tr( QString("Volume dispensed = %1 mL; pH = %2").arg(dispenseVolume).arg(pH) ) );
+  //TODO: See if change in next line worked
+  emit signalSetStatusBar( tr( "Volume dispensed = %1 mL; pH = %2" ).arg(dispenseVolume).arg(pH) );
   updateGL();
 }
 

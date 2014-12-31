@@ -48,7 +48,8 @@ Spectrometry::Spectrometry(QWidget *parent, const char *name)
   beakerSubstance = 0, buretSubstance = 0, indicator = 0;
   t = new QTimer( this );
   connect( t, SIGNAL(timeout()), SLOT(process()) );
-  t->start( 1500, true );
+  t->setSingleShot( true );
+  t->start( 1500 );
 }
 
 void Spectrometry::process() {
@@ -242,10 +243,10 @@ void Spectrometry::addToBeaker(double m1, int u1, int sub1, bool aw,
 void Spectrometry::setWavelength() {
   bool ok;
   double res = 
-    QInputDialog::getDouble(tr("Set wavelength"), 
+    QInputDialog::getDouble(this, tr("Set wavelength"), 
 			    tr("Enter the wavelength in nanometers:"), 
 			    wavelength, 200,
-			    800, 3, &ok, this );
+			    800, 3, &ok);
   if ( ok ) {
     // user entered something and pressed OK
     wavelength = res;

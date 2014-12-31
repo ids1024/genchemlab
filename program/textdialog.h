@@ -2,7 +2,7 @@
 #define TEXTDIALOG_H
 
 #include <qdialog.h>
-#include <q3textbrowser.h>
+#include <qtextbrowser.h>
 
 class TextDialog:public QDialog {
   Q_OBJECT

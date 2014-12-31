@@ -10,7 +10,7 @@
 
 #include <qapplication.h>
 #include <qtranslator.h>
-#include <qtextcodec.h>
+#include <QLocale>
 #include "application.h"
 
 // these #include's are needed on Windows
@@ -41,10 +41,10 @@ int main( int argc, char ** argv ) {
   QApplication a( argc, argv );
   // translation file for application strings
   QTranslator myapp( 0 );
-  myapp.load( QString( "genchemlab-") + QTextCodec::locale(), RingDir );
+  myapp.load( QString( "genchemlab-") + QLocale().name(), RingDir );
   a.installTranslator( &myapp );
   ApplicationWindow * mw = new ApplicationWindow();
-  mw->setCaption( a.tr("General Chemistry Lab Simulator") );
+  mw->setWindowTitle( a.tr("General Chemistry Lab Simulator") );
   mw->show();
   a.connect( &a, SIGNAL(lastWindowClosed()), &a, SLOT(quit()) );
   return a.exec();

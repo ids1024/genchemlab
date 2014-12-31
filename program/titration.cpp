@@ -283,16 +283,16 @@ void Titration::showSetup() {
   tmp1.setNum(rememberMass1);
   td1.mass1->setText(tmp1);
   if (buretSubstance == BASE_001M_NAOH)
-    td1.buretChoice->setCurrentItem(0);
+    td1.buretChoice->setCurrentIndex(0);
   if (buretSubstance == BASE_01M_NAOH)
-    td1.buretChoice->setCurrentItem(1);
+    td1.buretChoice->setCurrentIndex(1);
   if (buretSubstance == BASE_1M_NAOH)
-    td1.buretChoice->setCurrentItem(2);
+    td1.buretChoice->setCurrentIndex(2);
   if (buretSubstance == ACID_HCL)
-    td1.buretChoice->setCurrentItem(3);
+    td1.buretChoice->setCurrentIndex(3);
   if (buretSubstance == BASE_01M_NA2S2O3)
-    td1.buretChoice->setCurrentItem(4);
-  td1.inChoice->setCurrentItem((indicator - 990) / 10);
+    td1.buretChoice->setCurrentIndex(4);
+  td1.inChoice->setCurrentIndex((indicator - 990) / 10);
   if ( !td1.exec() ) return;
   addToBeaker( td1.mass1->text().toDouble(),
 	       td1.selectedChemical(),

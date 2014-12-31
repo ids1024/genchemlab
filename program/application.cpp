@@ -12,22 +12,20 @@
 
 #include <qimage.h>
 #include <qpixmap.h>
-#include <q3toolbar.h>
+#include <qtoolbar.h>
 #include <qtoolbutton.h>
 #include <qmenubar.h>
 //#include <qtextedit.h>
 #include <qlabel.h>
 #include <qfile.h>
-#include <q3filedialog.h>
+#include <qfiledialog.h>
 #include <qstatusbar.h>
 #include <qmessagebox.h>
 #include <qprinter.h>
 #include <qapplication.h>
-#include <q3accel.h>
-#include <q3textstream.h>
+#include <qtextstream.h>
 #include <qpainter.h>
-#include <q3paintdevicemetrics.h>
-#include <q3whatsthis.h>
+#include <qwhatsthis.h>
 //Added by qt3to4:
 #include <QCloseEvent>
 
@@ -46,10 +44,9 @@
 #include "helpwindow.h"
 #include <QDesktopWidget>
 
-extern QString RingDir;
-
 ApplicationWindow::ApplicationWindow()
-    : QMainWindow( 0, "example application main window", Qt::WDestructiveClose )
+    //: QMainWindow( 0, Qt::WA_DeleteOnClose ) TODO: Important?
+    : QMainWindow( 0 )
 {
   t1 = 0;
   QMenu * file = menuBar()->addMenu( tr("&File") );
@@ -72,7 +69,7 @@ ApplicationWindow::ApplicationWindow()
   file->addAction( tr("&Quit"), qApp, SLOT( closeAllWindows() ), Qt::CTRL+Qt::Key_Q );
 
   QMenu * switcher = new QMenu( tr("&Select Lab"), this );
-  select_id = menuBar()->addMenu( switcher );
+  select_action = menuBar()->addMenu( switcher );
 
   switcher->addAction( tr("&Titration"), this, SLOT(switchToWidget1()) );
   //switcher->addAction( tr("&Qualitative analysis"), this, 
@@ -91,7 +88,8 @@ ApplicationWindow::ApplicationWindow()
 
   menuBar()->addSeparator();
 
-  QMenu * help = menuBar()->addMenu( tr("&Help") );
+  QMenu * help = new QMenu( tr("&Help"), this );
+  QAction * help_action = menuBar()->addMenu( help );
 
   help->addAction( tr("&Help"), this, SLOT(getHelp()), Qt::Key_F1 );
   help->addSeparator();
@@ -101,7 +99,7 @@ ApplicationWindow::ApplicationWindow()
   //e = new QTextEdit( this, "editor" );
   //e->setFocus();
   //setCentralWidget( ll );
-  statusBar()->message( tr("Choose a lab from the 'Select Lab' menu") );
+  statusBar()->showMessage( tr("Choose a lab from the 'Select Lab' menu") );
 
   resize(400, 400);
 }
@@ -127,7 +125,7 @@ void ApplicationWindow::addToBeaker() {
   ChemDialog ch1(widget_id);
   if ( !ch1.exec() ) return;
   t1->addToBeaker( ch1.mass1->text().toDouble(),
-		   ch1.chemUnits->currentItem(),
+		   ch1.chemUnits->currentIndex(),
 		   ch1.selectedChemical(),
 		   ch1.addWater->isChecked(),
 		   ch1.mass2->text().toDouble() );
@@ -148,18 +146,18 @@ void ApplicationWindow::addIndicator() {
 void ApplicationWindow::newDoc()
 {
   ApplicationWindow *ed = new ApplicationWindow;
-  ed->setCaption( tr("General Chemistry Lab Simulator") );
+  ed->setWindowTitle( tr("General Chemistry Lab Simulator") );
   ed->show();
 }
 
 void ApplicationWindow::choose()
 {
-    QString fn = Q3FileDialog::getOpenFileName( QString::null, QString::null,
-					       this);
+    QString fn = QFileDialog::getOpenFileName( this, QString::null,
+					       QString::null);
     if ( !fn.isEmpty() )
 	load( fn );
     else
-	statusBar()->message( "Loading aborted", 2000 );
+	statusBar()->showMessage( "Loading aborted", 2000 );
 }
 
 
@@ -169,9 +167,9 @@ void ApplicationWindow::load( const QString &fileName )
     if ( !f.open( QIODevice::ReadOnly ) )
 	return;
 
-    Q3TextStream ts( &f );
-    setCaption( fileName );
-    statusBar()->message( "Loaded document " + fileName, 2000 );
+    QTextStream ts( &f );
+    setWindowTitle( fileName );
+    statusBar()->showMessage( "Loaded document " + fileName, 2000 );
 }
 
 
@@ -185,30 +183,30 @@ void ApplicationWindow::save()
     QString text = "";
     QFile f( filename );
     if ( !f.open( QIODevice::WriteOnly ) ) {
-	statusBar()->message( QString("Could not write to %1").arg(filename),
+	statusBar()->showMessage( QString("Could not write to %1").arg(filename),
 			      2000 );
 	return;
     }
 
-    Q3TextStream t( &f );
+    QTextStream t( &f );
     t << text;
     f.close();
 
-    setCaption( filename );
+    setWindowTitle( filename );
 
-    statusBar()->message( QString( "File %1 saved" ).arg( filename ), 2000 );
+    statusBar()->showMessage( QString( "File %1 saved" ).arg( filename ), 2000 );
 }
 
 
 void ApplicationWindow::saveAs()
 {
-    QString fn = Q3FileDialog::getSaveFileName( QString::null, QString::null,
-					       this );
+    QString fn = QFileDialog::getSaveFileName( this, QString::null,
+					       QString::null);
     if ( !fn.isEmpty() ) {
 	filename = fn;
 	save();
     } else {
-	statusBar()->message( "Saving aborted", 2000 );
+	statusBar()->showMessage( "Saving aborted", 2000 );
     }
 }
 
@@ -231,8 +229,8 @@ void ApplicationWindow::getHelp() {
     if (t1->whichLab() == 12) home = "extract.html"; // extraction
     if (t1->whichLab() == 20) home = "index.html"; // qualitative
   }
-  HelpWindow *help = new HelpWindow(home, RingDir, 0, "help viewer");
-  help->setCaption( tr("GenChemLab - Help viewer") );
+  HelpWindow *help = new HelpWindow(home, 0, "help viewer");
+  help->setWindowTitle( tr("GenChemLab - Help viewer") );
   if ( QApplication::desktop()->width() > 400
        && QApplication::desktop()->height() > 500 )
     help->show();
@@ -256,15 +254,15 @@ void ApplicationWindow::switchToWidget1() {
 	  SLOT(slotSetStatusBar(QString)) );
   setCentralWidget( t1 );
   t1->show();
-  menuBar()->removeAction(select_id);
-  statusBar()->message( tr("Starting titration lab.") );
+  statusBar()->showMessage( tr("Starting titration lab.") );
 
   QMenu * adder = new QMenu( this );
-  menuBar()->insertItem( tr("&Titration"), adder, -1, 1 );
+  select_action->setMenu(adder);
+  select_action->setText(tr("&Titration"));
 
-  adder->insertItem( tr("&Set up"), t1, SLOT(showSetup()) );
+  adder->addAction( tr("&Set up"), t1, SLOT(showSetup()) );
 
-  setCaption( tr("GenChemLab - Titration") );
+  setWindowTitle( tr("GenChemLab - Titration") );
   resize( 500, 500 );
 }
 
@@ -276,9 +274,9 @@ void ApplicationWindow::switchToWidget2() {
   setCentralWidget( t1 );
   t1->show();
 
-  menuBar()->removeAction(select_id);
-  statusBar()->message( tr("Starting qualitative analysis lab.") );
-  setCaption( tr("GenChemLab - Qualitative analysis") );
+  menuBar()->removeAction(select_action);
+  statusBar()->showMessage( tr("Starting qualitative analysis lab.") );
+  setWindowTitle( tr("GenChemLab - Qualitative analysis") );
 }
 
 void ApplicationWindow::switchToWidget3() {
@@ -289,17 +287,16 @@ void ApplicationWindow::switchToWidget3() {
   setCentralWidget( t1 );
   t1->show();
 
-  menuBar()->removeAction(select_id);
-
   QMenu * adder = new QMenu( this );
-  menuBar()->insertItem( tr("&Calorimetry"), adder, -1, 1 );
+  select_action->setMenu(adder);
+  select_action->setText(tr("&Calorimetry"));
 
-  adder->insertItem( tr("&Find calorimeter constant"), t1, 
+  adder->addAction( tr("&Find calorimeter constant"), t1, 
 		     SLOT(calorimeterConstant()) );
-  adder->insertItem( tr("&Set up experiment"), this, SLOT(addToBeaker()) );  
+  adder->addAction( tr("&Set up experiment"), this, SLOT(addToBeaker()) );  
 
-  statusBar()->message( tr("Starting calorimetry lab.") );
-  setCaption( tr("GenChemLab - Calorimetry") );
+  statusBar()->showMessage( tr("Starting calorimetry lab.") );
+  setWindowTitle( tr("GenChemLab - Calorimetry") );
 }
 
 void ApplicationWindow::switchToWidget4() {
@@ -310,17 +307,16 @@ void ApplicationWindow::switchToWidget4() {
   setCentralWidget( t1 );
   t1->show();
 
-  menuBar()->removeAction(select_id);
-
   QMenu * adder = new QMenu( this );
-  menuBar()->insertItem( tr("&Freezing-Point"), adder, -1, 1 );
+  select_action->setMenu(adder);
+  select_action->setText(tr("&Freezing-Point"));
 
-  adder->insertItem( tr("&Set up experiment"), this, SLOT(addToBeaker()) );  
-  adder->insertItem( tr("&Set target temperature"), t1, 
+  adder->addAction( tr("&Set up experiment"), this, SLOT(addToBeaker()) );  
+  adder->addAction( tr("&Set target temperature"), t1, 
 		     SLOT(targetTemperature()) );
 
-  statusBar()->message( tr("Starting freezing point depression lab.") );
-  setCaption( tr("GenChemLab - Freezing Point") );
+  statusBar()->showMessage( tr("Starting freezing point depression lab.") );
+  setWindowTitle( tr("GenChemLab - Freezing Point") );
 }
 
 void ApplicationWindow::switchToWidget5() {
@@ -331,18 +327,17 @@ void ApplicationWindow::switchToWidget5() {
   setCentralWidget( t1 );
   t1->show();
 
-  menuBar()->removeAction(select_id);
-
   QMenu * adder = new QMenu( this );
-  menuBar()->insertItem( tr("&Spectrophotometry"), adder, -1, 1 );
+  select_action->setMenu(adder);
+  select_action->setText(tr("&Spectrophotometry"));
 
-  adder->insertItem( tr("&Set wavelength"), t1, SLOT(setWavelength()) );  
-  adder->insertItem( tr("&Wavelength scan"), t1, SLOT(absScan()) );  
-  adder->insertItem( tr("&Make sample"), this, 
+  adder->addAction( tr("&Set wavelength"), t1, SLOT(setWavelength()) );  
+  adder->addAction( tr("&Wavelength scan"), t1, SLOT(absScan()) );  
+  adder->addAction( tr("&Make sample"), this, 
 		     SLOT(addToBeaker()) );
 
-  statusBar()->message( tr("Starting spectrophotometry lab.") );
-  setCaption( tr("GenChemLab - Spectrophotometry") );
+  statusBar()->showMessage( tr("Starting spectrophotometry lab.") );
+  setWindowTitle( tr("GenChemLab - Spectrophotometry") );
 }
 
 void ApplicationWindow::switchToWidget10() {
@@ -353,16 +348,15 @@ void ApplicationWindow::switchToWidget10() {
   setCentralWidget( t1 );
   t1->show();
 
-  menuBar()->removeAction(select_id);
-
   QMenu * adder = new QMenu( this );
-  menuBar()->insertItem( tr("&Vapor pressure"), adder, -1, 1 );
+  select_action->setMenu(adder);
+  select_action->setText(tr("&Vapor pressure"));
 
-  adder->insertItem( tr("&Set up"), this, 
+  adder->addAction( tr("&Set up"), this, 
 		     SLOT(addToBeaker()) );
 
-  statusBar()->message( tr("Starting vapor pressure lab.") );
-  setCaption( tr("GenChemLab - Vapor Pressure") );
+  statusBar()->showMessage( tr("Starting vapor pressure lab.") );
+  setWindowTitle( tr("GenChemLab - Vapor Pressure") );
 }
 
 void ApplicationWindow::switchToWidget11() {
@@ -373,16 +367,15 @@ void ApplicationWindow::switchToWidget11() {
   setCentralWidget( t1 );
   t1->show();
 
-  menuBar()->removeAction(select_id);
-
   QMenu * adder = new QMenu( this );
-  menuBar()->insertItem( tr("&Electrochemistry"), adder, -1, 1 );
+  select_action->setMenu(adder);
+  select_action->setText(tr("&Electrochemistry"));
 
-  adder->insertItem( tr("&Set up"), this, 
+  adder->addAction( tr("&Set up"), this, 
 		     SLOT(addToBeaker()) );
 
-  statusBar()->message( tr("Starting electrochemistry lab.") );
-  setCaption( tr("GenChemLab - Electrochemistry") );
+  statusBar()->showMessage( tr("Starting electrochemistry lab.") );
+  setWindowTitle( tr("GenChemLab - Electrochemistry") );
 }
 
 void ApplicationWindow::switchToWidget12() {
@@ -393,19 +386,19 @@ void ApplicationWindow::switchToWidget12() {
   setCentralWidget( t1 );
   t1->show();
 
-  menuBar()->removeAction(select_id);
   QMenu * adder = new QMenu( this );
-  menuBar()->insertItem( tr("E&xtraction"), adder, -1, 1 );
+  select_action->setMenu(adder);
+  select_action->setText(tr("E&xtraction"));
 
-  adder->insertItem( tr("E&xtract"), this, 
+  adder->addAction( tr("E&xtract"), this, 
 		     SLOT(addToBeaker()) );
 
-  statusBar()->message( tr("Starting extraction lab.") );
-  setCaption( tr("GenChemLab - Extraction") );
+  statusBar()->showMessage( tr("Starting extraction lab.") );
+  setWindowTitle( tr("GenChemLab - Extraction") );
 }
 
 void ApplicationWindow::slotSetStatusBar(QString m1) {
-  statusBar()->message( m1 );
+  statusBar()->showMessage( m1 );
 }
 
 void ApplicationWindow::doNothing() { }

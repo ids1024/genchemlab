@@ -4,8 +4,9 @@
 #include <GL/glu.h>
 
 LabWidget::LabWidget(QWidget *parent, const char *name)
-  : QGLWidget(parent, name)
+  : QGLWidget(parent)
 {
+  setObjectName(name);
   setupDone = false;
 }
 

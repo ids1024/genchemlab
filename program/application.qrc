@@ -1,0 +1,18 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource>
+        <file>../doc/index.html</file>
+        <file>../doc/titration.html</file>
+        <file>../doc/calorimetry.html</file>
+        <file>../doc/bpfp.html</file>
+        <file>../doc/spec.html</file>
+        <file>../doc/vapor.html</file>
+        <file>../doc/electro.html</file>
+        <file>../doc/extract.html</file>
+        <file>../doc/back.xpm</file>
+        <file>../doc/forward.xpm</file>
+        <file>../doc/home.xpm</file>
+        <file>../doc/HISTORY.txt</file>
+        <file>../doc/COPYRIGHT.txt</file>
+        <file>../doc/GPL.txt</file>
+    </qresource>
+</RCC>
