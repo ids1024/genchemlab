@@ -15,7 +15,7 @@ IndicatorDialog::IndicatorDialog(QWidget *parent, QString name):
         QDialog(parent)
 {
   setObjectName(name);
-  setModal(TRUE);
+  setModal(true);
   setWindowTitle( tr("Choose indicator") );
   QLabel *l1 = new QLabel(this);
   l1->setObjectName("Paper size label");

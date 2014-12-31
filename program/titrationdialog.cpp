@@ -16,7 +16,7 @@ TitrationDialog::TitrationDialog(QWidget *parent, QString name):
 	QDialog(parent)
 {
   setObjectName(name);
-  setModal(TRUE);
+  setModal(true);
   setWindowTitle( tr("Set up titration") );
   QLabel *l1 = new QLabel(this);
   l1->setObjectName("Paper size label");

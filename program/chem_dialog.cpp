@@ -15,7 +15,7 @@ ChemDialog::ChemDialog(int config, QWidget *parent, QString name):
 	QDialog(parent)
 {
   setObjectName(name);
-  setModal(TRUE);
+  setModal(true);
   con1 = config;
   if (config == 1)
     setWindowTitle( tr("Add chemical to beaker") );

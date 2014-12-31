@@ -15,7 +15,7 @@ TextDialog::TextDialog(QString t1, QWidget *parent, QString name):
         QDialog(parent)
 {
   setObjectName(name);
-  setModal(TRUE);
+  setModal(true);
   setWindowTitle( tr("Output") );
   QTextBrowser *te = new QTextBrowser(this);
   te->setObjectName("good label");

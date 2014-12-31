@@ -85,8 +85,8 @@ HelpWindow::HelpWindow( const QString& home_,
     QMenu* help = menuBar()->addMenu( tr("&Help") );
     help->addAction( tr("&About ..."), this, SLOT( about() ) );
 
-    forward_action->setEnabled(FALSE);
-    backward_action->setEnabled(FALSE);
+    forward_action->setEnabled(false);
+    backward_action->setEnabled(false);
     connect( browser, SIGNAL( backwardAvailable( bool ) ),
 	     this, SLOT( setBackwardAvailable( bool ) ) );
     connect( browser, SIGNAL( forwardAvailable( bool ) ),
@@ -101,13 +101,13 @@ HelpWindow::HelpWindow( const QString& home_,
     button->setText(tr("Backward"));
     connect( button, SIGNAL(triggered(QAction)), browser, SLOT(backward()) );
     connect( browser, SIGNAL( backwardAvailable(bool) ), button, SLOT( setEnabled(bool) ) );
-    button->setEnabled( FALSE );
+    button->setEnabled( false );
     button = new QToolButton( toolbar );
     button->setIcon(icon_forward);
     button->setText(tr("Forward"));
     connect( button, SIGNAL(triggered(QAction)), browser, SLOT(forward()) );
     connect( browser, SIGNAL( forwardAvailable(bool) ), button, SLOT( setEnabled(bool) ) );
-    button->setEnabled( FALSE );
+    button->setEnabled( false );
     button = new QToolButton( toolbar );
     button->setIcon(icon_home);
     button->setText(tr("Home"));
@@ -120,11 +120,11 @@ HelpWindow::HelpWindow( const QString& home_,
     connect( pathCombo, SIGNAL( activated( const QString & ) ),
 	     this, SLOT( pathSelected( const QString & ) ) );
     //toolbar->setStretchableWidget( pathCombo ); TODO: See if it works without this
-    //setRightJustification( TRUE ); TODO: Fix if necessary
+    //setRightJustification( true ); TODO: Fix if necessary
     //Commented out following: TODO: Important?
 //#if QT_VERSION >= 300
-//    setDockEnabled( Qt::DockLeft, FALSE );
-//    setDockEnabled( Qt::DockRight, FALSE );
+//    setDockEnabled( Qt::DockLeft, false );
+//    setDockEnabled( Qt::DockRight, false );
 //#endif
 
     pathCombo->insertItem( 0, home_ );
@@ -154,11 +154,11 @@ void HelpWindow::textChanged()
     selectedURL = browser->source().toString();
 
     if ( !selectedURL.isEmpty() && pathCombo ) {
-	bool exists = FALSE;
+	bool exists = false;
 	int i;
 	for ( i = 0; i < pathCombo->count(); ++i ) {
 	    if ( pathCombo->itemText( i ) == selectedURL ) {
-		exists = TRUE;
+		exists = true;
 		break;
 	    }
 	}

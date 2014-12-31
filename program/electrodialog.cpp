@@ -17,7 +17,7 @@ ElectroDialog::ElectroDialog(int inm1, int inm2,double inconc1, double inconc2,
   QDialog(parent)
 {
   setObjectName(name);
-  setModal(TRUE);
+  setModal(true);
   setWindowTitle( tr("Set up electrochemistry experiment") );
   QLabel *l1 = new QLabel(this);
   l1->setObjectName("Left beaker");
