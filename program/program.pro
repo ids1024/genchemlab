@@ -47,3 +47,6 @@ RESOURCES     = application.qrc
 TARGET = genchemlab
 QT +=  opengl printsupport
 LIBS += -lGLU
+genchemlab.path = /usr/bin/
+genchemlab.files = genchemlab
+INSTALLS += genchemlab
