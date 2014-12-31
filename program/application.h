@@ -65,7 +65,6 @@ private:
     QString filename;
     LabWidget *t1;
     QAction * select_action;
-    QAction * help_action;
     int widget_id;
 };
 

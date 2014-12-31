@@ -88,8 +88,7 @@ ApplicationWindow::ApplicationWindow()
 
   menuBar()->addSeparator();
 
-  QMenu * help = new QMenu( tr("&Help"), this );
-  QAction * help_action = menuBar()->addMenu( help );
+  QMenu * help = menuBar()->addMenu( tr("&Help") );
 
   help->addAction( tr("&Help"), this, SLOT(getHelp()), Qt::Key_F1 );
   help->addSeparator();
