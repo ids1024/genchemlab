@@ -33,7 +33,7 @@ private slots:
     void setBackwardAvailable( bool );
     void setForwardAvailable( bool );
 
-    void textChanged();
+    void textChanged(const QUrl &src);
     void about();
 
     void pathSelected( const QString & );

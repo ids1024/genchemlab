@@ -41,18 +41,16 @@
 
 HelpWindow::HelpWindow( const QString& home_,
 			QWidget* parent, const char *name )
-//    : QMainWindow( parent, name, Qt::WDestructiveClose ), TODO: Important?
     : QMainWindow( parent ),
       pathCombo( 0 ), selectedURL()
 {
     setObjectName(name);
     browser = new QTextBrowser( this );
 
-    //browser->mimeSourceFactory()->setFilePath( _path ); TODO: NEEDED?
     browser->setSearchPaths(QStringList(":doc/"));
     browser->setFrameStyle( QFrame::Panel | QFrame::Sunken );
-    connect( browser, SIGNAL( textChanged() ),
-	     this, SLOT( textChanged() ) );
+    connect( browser, SIGNAL( sourceChanged(QUrl) ),
+	     this, SLOT( textChanged(QUrl) ) );
 
     setCentralWidget( browser );
 
@@ -109,16 +107,11 @@ HelpWindow::HelpWindow( const QString& home_,
     toolbar->addSeparator();
 
     pathCombo = new QComboBox( toolbar );
+    pathCombo->setEditable(true);
     toolbar->addWidget(pathCombo);
     connect( pathCombo, SIGNAL( activated( const QString & ) ),
 	     this, SLOT( pathSelected( const QString & ) ) );
-    //toolbar->setStretchableWidget( pathCombo ); TODO: See if it works without this
-    //setRightJustification( true ); TODO: Fix if necessary
-    //Commented out following: TODO: Important?
-//#if QT_VERSION >= 300
-//    setDockEnabled( Qt::DockLeft, false );
-//    setDockEnabled( Qt::DockRight, false );
-//#endif
+    pathCombo->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
 
     pathCombo->insertItem( 0, home_ );
     browser->setFocus();
@@ -137,14 +130,14 @@ void HelpWindow::setForwardAvailable( bool b)
 }
 
 
-void HelpWindow::textChanged()
+void HelpWindow::textChanged(const QUrl &src)
 {
+    selectedURL = src.toString();
+
     if ( browser->documentTitle().isNull() )
-	setWindowTitle( "GenChemLab - Help viewer - " + browser->source().toString() );
+	setWindowTitle( "GenChemLab - Help viewer - " + selectedURL );
     else
 	setWindowTitle( "GenChemLab - Help viewer - " + browser->documentTitle() ) ;
-
-    selectedURL = browser->source().toString();
 
     if ( !selectedURL.isEmpty() && pathCombo ) {
 	bool exists = false;
