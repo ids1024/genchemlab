@@ -1,4 +1,5 @@
-This is a fork of the original program updated to work with Qt4.
+This is a fork of the original program updated to work with Qt5.
+Autotools is removed in favor of qmake.
 -------------------------------------------------------------------------------
 
 
