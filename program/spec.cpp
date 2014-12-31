@@ -4,9 +4,7 @@
 
 #include <iostream>
 #include <math.h>
-#ifdef UNIX
 #include <unistd.h>
-#endif
 //Added by qt3to4:
 #include <QMouseEvent>
 #include <QKeyEvent>
@@ -265,11 +263,7 @@ void Spectrometry::absScan() {
 			    tr("The spectrophotometer will now scan from 390 nm to 740 nm and display the results.") );
   wa = tr("Wavelength, absorbance\n");
   for (double j = 390.0; j < 750.0; j += 10.0) {
-#ifdef UNIX
     sleep(1);
-#else
-    Sleep(1000);
-#endif
     wavelength = j;
     process();
     n1.setNum(wavelength);
