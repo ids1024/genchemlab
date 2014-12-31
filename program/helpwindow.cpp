@@ -49,6 +49,7 @@ HelpWindow::HelpWindow( const QString& home_,
     browser = new QTextBrowser( this );
 
     //browser->mimeSourceFactory()->setFilePath( _path ); TODO: NEEDED?
+    browser->setSearchPaths(QStringList(":doc/"));
     browser->setFrameStyle( QFrame::Panel | QFrame::Sunken );
     connect( browser, SIGNAL( textChanged() ),
 	     this, SLOT( textChanged() ) );
@@ -59,7 +60,7 @@ HelpWindow::HelpWindow( const QString& home_,
 	browser->setSource( home_ );
 
     connect( browser, SIGNAL( highlighted( const QString&) ),
-	     statusBar(), SLOT( message( const QString&)) );
+	     statusBar(), SLOT( showMessage( const QString&)) );
 
     resize( 640,700 );
 
@@ -67,9 +68,9 @@ HelpWindow::HelpWindow( const QString& home_,
     file->addAction( tr("&Close"), this, SLOT( close() ), Qt::CTRL+Qt::Key_W );
 
     // The same three icons are used twice each.
-    QIcon icon_back( QPixmap( ":../doc/back.xpm" ) );
-    QIcon icon_forward( QPixmap( ":../doc/forward.xpm" ) );
-    QIcon icon_home( QPixmap( ":../doc/home.xpm" ) );
+    QIcon icon_back( QPixmap( ":doc/back.xpm" ) );
+    QIcon icon_forward( QPixmap( ":doc/forward.xpm" ) );
+    QIcon icon_home( QPixmap( ":doc/home.xpm" ) );
 
     QMenu* go = menuBar()->addMenu( tr("&Go") );
     backward_action = go->addAction( icon_back,
@@ -94,29 +95,21 @@ HelpWindow::HelpWindow( const QString& home_,
 
 
     QToolBar* toolbar = addToolBar( "ToolBar" );
-    QToolButton* button;
+    QAction* action;
 
-    button = new QToolButton( toolbar );
-    button->setIcon(icon_back);
-    button->setText(tr("Backward"));
-    connect( button, SIGNAL(triggered(QAction)), browser, SLOT(backward()) );
-    connect( browser, SIGNAL( backwardAvailable(bool) ), button, SLOT( setEnabled(bool) ) );
-    button->setEnabled( false );
-    button = new QToolButton( toolbar );
-    button->setIcon(icon_forward);
-    button->setText(tr("Forward"));
-    connect( button, SIGNAL(triggered(QAction)), browser, SLOT(forward()) );
-    connect( browser, SIGNAL( forwardAvailable(bool) ), button, SLOT( setEnabled(bool) ) );
-    button->setEnabled( false );
-    button = new QToolButton( toolbar );
-    button->setIcon(icon_home);
-    button->setText(tr("Home"));
-    connect( button, SIGNAL(triggered(QAction)), browser, SLOT(home()) );
+    action = toolbar->addAction( icon_back, tr("Backward"), browser, SLOT(backward()) );
+    connect( browser, SIGNAL( backwardAvailable(bool) ), action, SLOT( setEnabled(bool) ) );
+    action->setEnabled( false );
+    action = toolbar->addAction( icon_forward, tr("Forward"), browser, SLOT(forward()) );
+    connect( browser, SIGNAL( forwardAvailable(bool) ), action, SLOT( setEnabled(bool) ) );
+    action->setEnabled( false );
+    action = toolbar->addAction( icon_home, tr("Home"), browser, SLOT(home()) );
 
 
     toolbar->addSeparator();
 
     pathCombo = new QComboBox( toolbar );
+    toolbar->addWidget(pathCombo);
     connect( pathCombo, SIGNAL( activated( const QString & ) ),
 	     this, SLOT( pathSelected( const QString & ) ) );
     //toolbar->setStretchableWidget( pathCombo ); TODO: See if it works without this

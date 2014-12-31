@@ -1,18 +1,19 @@
 <!DOCTYPE RCC><RCC version="1.0">
     <qresource>
-        <file>../doc/index.html</file>
-        <file>../doc/titration.html</file>
-        <file>../doc/calorimetry.html</file>
-        <file>../doc/bpfp.html</file>
-        <file>../doc/spec.html</file>
-        <file>../doc/vapor.html</file>
-        <file>../doc/electro.html</file>
-        <file>../doc/extract.html</file>
-        <file>../doc/back.xpm</file>
-        <file>../doc/forward.xpm</file>
-        <file>../doc/home.xpm</file>
-        <file>../doc/HISTORY.txt</file>
-        <file>../doc/COPYRIGHT.txt</file>
-        <file>../doc/GPL.txt</file>
+        <file alias="doc/index.html">../doc/index.html</file>
+        <file alias="doc/start.html">../doc/start.html</file>
+        <file alias="doc/titration.html">../doc/titration.html</file>
+        <file alias="doc/calorimetry.html">../doc/calorimetry.html</file>
+        <file alias="doc/bpfp.html">../doc/bpfp.html</file>
+        <file alias="doc/spec.html">../doc/spec.html</file>
+        <file alias="doc/vapor.html">../doc/vapor.html</file>
+        <file alias="doc/electro.html">../doc/electro.html</file>
+        <file alias="doc/extract.html">../doc/extract.html</file>
+        <file alias="doc/back.xpm">../doc/back.xpm</file>
+        <file alias="doc/forward.xpm">../doc/forward.xpm</file>
+        <file alias="doc/home.xpm">../doc/home.xpm</file>
+        <file alias="doc/HISTORY.txt">../doc/HISTORY.txt</file>
+        <file alias="doc/COPYRIGHT.txt">../doc/COPYRIGHT.txt</file>
+        <file alias="doc/GPL.txt">../doc/GPL.txt</file>
     </qresource>
 </RCC>
