@@ -11,37 +11,15 @@
 #include <qapplication.h>
 #include <qtranslator.h>
 #include <QLocale>
+#include <QLibraryInfo>
 #include "application.h"
 
-// these #include's are needed on Windows
-#ifndef UNIX
-#include <malloc.h>
-#include <direct.h>
-#endif
-
-QString RingDir;
-
 int main( int argc, char ** argv ) {
-  // set library directory (RINGDIR)
-#ifdef UNIX
-  QString dname(RINGHOME);
-  if (dname.right(1) != QString("/"))
-    dname.append(QString("/"));
-  dname.append("doc/");
-#else
-  char *pwd = (char*)malloc(sizeof(char) * 80);
-  _getcwd(pwd, 80);
-  QString dname;
-  dname = pwd;
-  dname.append("\\doc\\");
-#endif
-  RingDir = dname;
-  // end RINGDIR
-
   QApplication a( argc, argv );
   // translation file for application strings
   QTranslator myapp( 0 );
-  myapp.load( QString( "genchemlab-") + QLocale().name(), RingDir );
+  myapp.load( "genchemlab-" + QLocale::system().name(),
+             QLibraryInfo::location(QLibraryInfo::TranslationsPath) );
   a.installTranslator( &myapp );
   ApplicationWindow * mw = new ApplicationWindow();
   mw->setWindowTitle( a.tr("General Chemistry Lab Simulator") );
